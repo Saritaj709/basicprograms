@@ -3,8 +3,8 @@ package com.bridgelabz.utility;
 import com.bridgelabz.functionprogs.*;
 import java.util.Scanner;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.lang.Math;
+import java.util.Arrays;
 
 public class Utility {
 /******************************************************************************/
@@ -150,14 +150,7 @@ public class Utility {
 
 	}
 
-	/********************************************************************************/
-	// Tic_Tac Toe or Cross game implementation //
-	
-	/*********************************************************************/
-
-	/**
-	 * @return 
-	 * @return ************************************************************************/
+	/************************************************************************/
 	// Quadratic_Equation implementation //
 	public static double quadratic() {
 		Scanner sc12 = new Scanner(System.in);
@@ -223,6 +216,7 @@ public class Utility {
 	  /*********************************************************************/
 	 
 	 // FlipCoin implementation    //
+	 
 	 public static void flipCoin()
 	 {
 		 int loopCount=1;
@@ -244,6 +238,7 @@ public class Utility {
 	 }
 /****************************************************************************/
 	   // LeapYear implementation //
+	 
 	 public static void leapYear()
 	 {
 	 Scanner sc=new Scanner(System.in);
@@ -300,6 +295,7 @@ public class Utility {
 	/*************************************************************************/
 	
 	// Prime Factors    implementation  //
+	
 	public static void primeFactors()
 	{
 	int n;
@@ -341,26 +337,32 @@ public class Utility {
 		$Goal=sc6.nextInt();
 		System.out.println("enter noOfTimes");
 		noOfTimes=sc6.nextInt();
-		int bets=0,noOfWins=0;
-		for(int i=0;i<noOfTimes;i++)
+		 double bets=0,noOfWins=0,noOfLoose=0;
+	    if(noOfTimes>0)
+	    {
+		while($Stake>0 && $Stake!=$Goal)
 		{
-		int cash=$Stake;
-		while(cash>0 && cash<$Goal)
-		{
-		bets++;
-		if(Math.random()<0.5)
-		cash++;
-		else
-		cash--;
-		}
-		if(cash==$Goal)
+		if(Math.random()>0.5)
+		{bets++;
 		noOfWins++;
+		$Stake=$Stake+1;
+		System.out.println("won");
+		}
+		else
+		{
+			noOfLoose++;
+			$Stake=$Stake-1;
+			System.out.println("loose");
+		}
 		}
 		System.out.println();
-		System.out.println(noOfWins + " wins " +noOfTimes);
-		System.out.println("Percentage of game won= " +noOfWins*100/noOfTimes);
+		System.out.println(noOfWins + " wins " +noOfTimes + "number of times");
+		System.out.println(noOfLoose + "loose" + noOfTimes + "number of times");
+		System.out.println("Percentage of game won= " +(noOfWins*100)/(noOfWins+noOfLoose));
+		System.out.println("Percentage of game loosed=" +(noOfLoose*100)/(noOfWins+noOfLoose));
 		System.out.println("avg. no. of bets= " +bets/noOfTimes);
 		}
+	}
 /***************************************************************************/
 	// Euclidean distance implementation //  
 	
@@ -479,6 +481,53 @@ public class Utility {
 			return s.toString();
 		}
 	
-	}
+		/**************************************************************/
+		//      Algorithm Programs
+/**************************************************************************/
+		// First Program
+	/******************************************************************/
+		// Two detect of two strings are Anagram (having same characters in both) //
+		
+		public static void anagramDetection()
+		{
+			String s1 = "abcd";
+		    String s2 = "dcba";
+		    boolean isAnagram = false;
+		    if (s1.length() == s2.length()) {
+		        char[] s1AsChar = s1.toCharArray();
+		        char[] s2AsChar = s2.toCharArray();
+		        Arrays.sort(s1AsChar);
+		        Arrays.sort(s2AsChar);
+		        isAnagram = Arrays.equals(s1AsChar, s2AsChar);
+		   if(isAnagram==true)
+		    System.out.println("Strings are anagram");
+		else
+		System.out.println("Strings are not anagram");
+		}
+		
+		}
+ /************************************************************************/
+		 // To find Prime numbers from 0 to 1000
+		
+		public static void primeNumbers()
+		{
+			int i;
+			for(i=0;i<=1000;i++)
+			{
+				for(int j=2;j<i;j++)
+				{
+
+			if(i%j==0)	
+				{//System.out.println("Not a prime no.");
+			break;
+				}
+				}
+				System.out.println("prime no.s are:" +i);
+			}
+		}
+		
+/**************************************************************************/	
+
+}
 
 	
