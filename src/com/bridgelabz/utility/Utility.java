@@ -1,10 +1,14 @@
 package com.bridgelabz.utility;
 
 import com.bridgelabz.functionprogs.*;
+import java.util.*;
+import java.io.*;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Utility {
 /******************************************************************************/
@@ -140,14 +144,29 @@ public class Utility {
 	private static Scanner sc;
 	private static Scanner sc2;
 	private static Scanner sc3;
+	private static Object key;
 
-	public static void stopWatch(long s, long e) {
-		s = System.nanoTime();
-		System.out.println("calculating time from " + s + "nano secs" + e + "micro sec");
-		e = System.nanoTime();
-		long total_time = e - s;
+	public static void stopWatch(long start, long end) {
+		start = System.nanoTime();
+		System.out.println("calculating time from " + start + "nano secs" + end + "micro sec");
+	   end = System.nanoTime();
+		long total_time = end - start;
 		System.out.println("Time measured is:  " + total_time + "nano secs");
 
+	}
+	
+	 // Timer functions
+	public static long startTimer()   //Start
+	{
+		System.out.println("Timer started....");
+	    long startTime=System.nanoTime();
+	    return startTime;
+	}
+	public static long endTimer()       //end
+	{
+		System.out.println("Timer ended......");
+		long endTime=System.nanoTime();
+		return endTime;
 	}
 
 	/************************************************************************/
@@ -527,7 +546,611 @@ public class Utility {
 		}
 		
 /**************************************************************************/	
-
+         // Prime numbers that are anagram and palindrome
+		
+		public static boolean oneDigit(int num)
+		{
+			return(num>=0 && num<10);
+		}
+		public static boolean isPalUtil(int num,int dupNum)
+		{
+			if(oneDigit(num))
+				return(num==(dupNum)%10);
+			if(!isPalUtil(num/10,dupNum))
+				return false;
+			dupNum/=10;
+			return(num%10==(dupNum%10));
+		}
+		public static boolean isPal(int num)
+		{
+			if(num<0)
+				num=-num;
+			int dupNum=num;
+			return isPalUtil(num,dupNum);
+		}
+		public static void printPalPrime(int n)
+		{
+			boolean prime[]=new boolean[n+1];
+			Arrays.fill(prime, true);
+			for(int p=2;p*p<=n;p++)
+			{
+				if(prime[p])
+					for(int i=p*2;i<=n;i+=p)
+					{
+						prime[i]=false;
+					}
+			}
+		
+		for(int p=2;p<=n;p++)
+		{
+			if(prime[p] && isPal(p))
+			{
+				System.out.print(p+" ");
+			}
+		}
 }
+		
+/**********************************************************************/
+		
+		//Sorting Techniques(binary search,insertion sort,bubble sort)
 
+		public static void BinarySearchMethodInt()
+		{
+			 int arr1[] = {2,3,4,10,40};
+		        int n = arr1.length;
+		        int search = 10;
+		        int result =binarySearch(arr1,0,n-1,search);
+		        if (result == -1)
+		            System.out.println("Element not present");
+		        else
+		            System.out.println("Element found at index " + 
+		                                                 result);
+		}
+	        // Returns index of x if it is present in arr[start..
+			    // end], else return -1
+			  static  int binarySearch(int arr[], int start, int end, int pos)
+			    {
+			        if (end>=start)
+			        {
+			            int mid = start + (end - start)/2;
+			 
+			            // If the element is present at the 
+			            // middle itself
+			            if (arr[mid] == pos)
+			               return mid;
+			 
+			            // If element is smaller than mid, then 
+			            // it can only be present in left subarray
+			            if (arr[mid] > pos)
+			               return binarySearch(arr, start, mid-1, pos);
+			 
+			            // Else the element can only be present
+			            // in right subarray
+			            return binarySearch(arr, mid+1, end, pos);
+			        }
+			 
+			        // We reach here when element is not present
+			        //  in array
+			        return -1;
+			    }
+			  
+/**************************************************************************/
+        /*  public static void binarySearchString()
+          {
+        	  String[] names = new String[] {"peach", "apple", "fig", "mango", "orange", "blueberry"};
+        	  
+        	    System.out.println();
+        	    System.out.println("String test array contains...");
+        	 
+        	    for (int j = 0; j < names.length; j++) {
+        	    for (int i = j + 1; i < names.length; i++) {
+        	        if (names[i].compareTo(names[j]) < 0) {
+        	          String t = names[j];
+        	          names[j] = names[i];
+        	          names[i] = t;
+        	        }
+        	      }
+        	      System.out.print(names[j] + " ");
+        	    }
+        	 
+        	    int results;
+        	    for (int key = -4; key < 6; key++)
+        	    {
+        	        results = searchString(names, key);
+        	        if (results >= 0)
+        	            System.out.println(key + " is at index " + results);
+        	        else
+        	            System.out.println(key + " is not in the array.");
+        	 
+        	  }
+          }
+        	 
+        	    public static int search(int[]a, int first, int last, int key)
+        	    {
+        	        int result = 0;
+        	 
+        	        if (first > last)
+        	            result = -1;
+        	        else
+        	        {
+        	            int mid = (first + last)/2;
+        	 
+        	            if (key == a [mid])
+        	                result = mid;
+        	            else if (key < a[mid])
+        	                result = search(a, first, mid - 1, key);
+        	            else if (key > a[mid])
+        	                result = search(a, mid + 1, last, key);
+        	        }
+        	        return result;
+        	    }
+        	    public static int searchString(String[] names, String key) {
+        	    int first = 0;
+        	    int last  = names.length;
+        	 
+        	    while (first < last) {
+        	        int mid = (first + last) / 2;
+        	        if (key.compareTo(names[mid]) < 0) {
+        	            last = mid;
+        	        } else if (key.compareTo(names[mid]) > 0) {
+        	            first = mid + 1;
+        	        } else {
+        	            return mid;
+        	        }
+        	    }
+        	    return -(first + 1);
+        	}
+        	 
+        	*/
+		 public static void insertionSortInt()
+		 {
+			 int arr[] = {12, 11, 13, 5, 6};
+
+			    sort(arr);
+			           
+			          printArray(arr);
+		 }
+		     /*Function to sort array using insertion sort*/
+			   public static void sort(int arr[])
+			      {
+			          int n = arr.length;
+			          for (int i=1; i<n; ++i)
+			          {
+			              int key = arr[i];
+			              int j = i-1;
+			   
+			              /* Move elements of arr[0..i-1], that are
+			                 greater than key, to one position ahead
+			                 of their current position */
+			              while (j>=0 && arr[j] > key)
+			              {
+			                  arr[j+1] = arr[j];
+			                  j = j-1;
+			              }
+			              arr[j+1] = key;
+			          }
+			      }
+			   
+			      /* A utility function to print array of size n*/
+			     public static void printArray(int arr[])
+			      {
+			          int n = arr.length;
+			          for (int i=0; i<n; ++i)
+			              System.out.print(arr[i] + " ");
+			   
+			          System.out.println();
+			      }
+			   
+			     /********************************************************/
+			     //Insertionsort for String     //
+
+			    public static void insertionsortString()
+			    {
+			         int lineNumber = 5;
+			         int i,j;
+			         String key;
+			         String[] inputArray = {"E","D","C","B","A","B"};
+			         System.out.println(Arrays.toString(inputArray));
+			         for (j = 1; j < lineNumber; j++) {
+			             key = inputArray[j];
+			             i = j - 1;
+			             while (i >= 0) {
+			                 if (key.compareTo(inputArray[i]) < 0) {
+			                     break;
+			                 }
+			                 inputArray[i + 1] = inputArray[i];
+			                 i--;
+			             }
+			             inputArray[i + 1] = key;
+			             System.out.println(Arrays.toString(inputArray));
+			         }
+			         System.out.println(Arrays.toString(inputArray));
+			         
+			    }
+			    
+			    
+			    /****************************************************/
+			    // Bubblesort for Integer //
+			    public static void bubbleSortInt()
+			    {
+			    	int[] num = {5,4,3,2,1};
+			        sortArray(num);
+			        printArray1(num);  
+			    }
+			    public static void sortArray(int[] x) {//go through the array and sort from smallest to highest
+			        for(int i=0; i<x.length; i++) {
+			        	for(int j=1;j<x.length-i;j++)
+			        	{
+			           int temp=0;
+			           if(x[j-1] > x[j]) {
+			              temp = x[j-1];
+			              x[j-1] = x[j];
+			              x[j] = temp;
+			           }
+			        }
+			     }
+			    }
+
+			     public static void printArray1(int[] x) {
+			        for(int i=0; i<x.length; i++)
+			          System.out.print(x[i] + " ");
+			     }
+	/*************************************************************/
+			     //Bubblesort for String //
+			    
+			     public static void bubbleSortString()
+			     {
+			    		        //Declare and Initialize Array
+
+			    		        String list[]={"artichoke" , "Apple" , "CHERRY" , "banana"};
+
+			    		        BubbleSort(list);
+			    		        //Begin For loop
+
+			    		        for(int i=0; i<list.length; i++)
+
+			    		        {
+
+			    		            System.out.println(list[i]);
+
+			    		        }
+
+			    		    }// End of Main
+
+			    		     
+
+			    		    public static void BubbleSort(String[] array) {
+
+			    		        String temp;
+
+			    		        // Begin For loop
+
+			    		        for(int i=0; i<array.length; i++) {
+
+			    		            //Open For loop
+
+			    		            for(int j=0; j<array.length-1-i; j++) {
+
+			    		                //Open If Statement Compare and sort strings
+
+			    		            if(array[j].compareTo(array[j+1])>0) {
+
+			    		                temp = array[j];
+
+			    		                array[j] = array[j+1];
+
+			    		                array[j+1] = temp;
+
+			    		            }//End of If Statement
+
+			    		        }//End of For Loop
+
+			    		        }//End of For Loop
+
+			    		    }
+ /*********************************************************************/
+			    		    // Binary search for words //
+			    		    
+			    		    public static void binarySearchWord(String s[],String key)
+			    		    {
+			    		    	String temp="";
+			    		    	for(int i=0;i<s.length-1;i++)
+			    		    	{
+			    		    		for(int j=i+1;j<s.length;j++)
+			    		    		{
+			    		    			if(s[i].equals(s[j]))
+			    		    			{
+			    		    				temp=s[i];
+			    		    				s[i]=s[j];
+			    		    				s[j]=temp;
+			    		    			}
+			    		    		}
+			    		    	}
+			    		    	int start=0;
+			    		    	int end=s.length-1;
+			    		    	for(int i=0;i<s.length;i++)
+			    		    	{
+			    		    	int mid=(start+end)/2;
+			    		    	if(key.compareTo(s[i])==0)
+			    		    	{
+			    		    		System.out.println("word found at :" +i);
+			    		    	}
+			    		    	else if(key.compareTo(s[i])<0)
+			    		    	{
+			    		    		start=mid+1;
+			    		    		mid=(start+end)/2;
+			    		    		
+			    		    			}
+			    		    	else if(key.compareTo(s[i])>0)
+			    		    	{
+			    		    	end=mid-1;
+			    		    	mid=(start+end)/2;
+			    		    	}
+			    		    	else
+			    		    		System.out.println("word not found");
+			    		    	}
+			    		    }
+	/*******************************************************************/
+			   //Bubblesort for list of array//
+			    		    
+public static void bubbleSortList()
+    {
+        List<Integer> myList2 = new ArrayList<Integer>();
+        int min = 2;
+        int max = 30;
+        for (int i=0; i<(int)(Math.random() * ( max - min) + min); i++)
+        {
+            myList2.add((int)(Math.random() * 100));
+        }
+
+        System.out.println("Unsorted list 2");
+        for (int element: myList2)
+        {
+            System.out.print(element + " ");
+        }
+        System.out.println("");
+
+        System.out.println("Bubble sorted list 2 (BubbleSort2)");
+        bubbleSort2(myList2);
+        for(int element: myList2)
+        {
+            System.out.print(element + " ");
+        }
+    }
+
+    public static void swap2(List<Integer> x, int i, int j)
+    {
+        Integer temp = x.get(i);
+        x.set(i, x.get(j));
+        x.set(j, temp);
+    }
+
+    public static void bubbleSort2(List<Integer> x)
+    {
+        int mostRightSwap = x.size() - 1;
+        while (mostRightSwap > 0)
+        {
+            for (int i=0; i<x.size()-1; i++)
+            {
+                if (x.get(i) > x.get(i + 1))
+                {
+                    swap2(x, i, i + 1);
+                    mostRightSwap = i;
+                }
+            }
+        }
+    }
+    
+/**********************************************************************/
+    // MergeSort implementation
+
+    public static void mergeSort()
+    {
+            String[] ClassOne = { "Kring", "Panda", "Soliel", "Darryl", "Chan", "Matang", "Jollibee.", "Inasal" };
+            String[] ClassTwo = { "Minnie", "Kitty", "Madonna", "Miley", "Zoom-zoom", "Cristine", "Bubbles", "Ara", "Rose", "Maria" };
+            String[] names = new String[ClassOne.length + ClassTwo.length];
+
+            mergeSort(ClassOne);
+            mergeSort(ClassTwo);
+
+            merge(names, ClassOne, ClassTwo);
+
+            mergeSort(names);
+            //Arrays.sort(names);
+
+            for (String ClassThree : names) {
+                System.out.println(ClassThree);
+            }
+        }
+
+        public static void mergeSort(String[] names) {
+            if (names.length > 2) {
+                String[] left = new String[names.length / 2];
+                String[] right = new String[names.length - names.length / 2];
+
+                for (int i = 0; i < left.length; i++) {
+                    left[i] = names[i];
+                }
+
+                for (int i = 0; i < right.length; i++) {
+                    right[i] = names[i + names.length / 2];
+                }
+
+                mergeSort(left);
+                mergeSort(right);
+                merge(names, left, right);
+            }
+        }
+
+        public static void merge(String[] names, String[] left, String[] right) {
+            int a = 0;
+            int b = 0;
+            for (int i = 0; i < names.length; i++) {
+                if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
+                    names[i] = left[a];
+                    a++;
+                } else {
+                    names[i] = right[b];
+                    b++;
+                }
+            }
+        }
+        /**************************************************************/
+        //  Insertion sort for list of strings  //
+        
+        public static void insertionSortList()
+        {
+                String Mercury="Mercury", Venus="Venus", Earth="Earth", Mars="Mars", Jupiter="Jupiter", Saturn="Saturn", Uranus="Uranus", Neptune="Neptune", Pluto="Pluto" ;
+                String list [] = {Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto};
+
+                System.out.println ("Array contents before sorting...");
+                System.out.print (list [0]);
+                System.out.print (" ");
+                System.out.print (list [1]);
+                System.out.print (" ");
+                System.out.print (list [2]);
+                System.out.print (" ");
+                System.out.print (list [3]);
+                System.out.print (" ");
+                System.out.print (list [4]);
+                System.out.println ("");
+                System.out.println ("************************************");
+                System.out.println ("PLEASE. NOT THE ASS.");
+
+                Utility insertionSortList;
+				Utility.insertSort (list);
+
+                System.out.println ("************************************");
+                System.out.println ("Array contents after sorting...");
+                System.out.print (list [0]);
+                System.out.print (" ");
+                System.out.print (list [1]);
+                System.out.print (" ");
+                System.out.print (list [2]);
+                System.out.print (" ");
+                System.out.print (list [3]);
+                System.out.print (" ");
+                System.out.print (list [4]);
+
+
+
+
+
+                // Place your program here.  'c' is the output console
+            }
+
+            public static void insertSort (String [] list)
+            {
+                for (int top = 1 ; top < list.length ; top++)
+                {
+                    String item = list [top];
+                    int i = top;
+                    while (i > 0 && item.compareTo(list [i - 1]) < 0)
+                    {
+                        list [i] = list [i - 1];
+                        i--;
+                    }
+                    list [i] = item;
+                    System.out.print (list [0]);
+                    System.out.print (" ");
+                    System.out.print (list [1]);
+                    System.out.print (" ");
+                    System.out.print (list [2]);
+                    System.out.print (" ");
+                    System.out.print (list [3]);
+                    System.out.print (" ");
+                    System.out.print (list [4]);
+                    System.out.println ();
+                }
+            }
+        // Insertion_Sort_Example class
+    
+
+ /***********************************************************************/
+       // Finding number using binary search //
+ /*public static void binarySearch(int key,int low,int high,int arr[])
+ {
+	 int N = 0,mid;
+	 boolean flag=true;
+	 System.out.println("enter array");
+	 for(int i=0;i<10;i++)
+	 {
+	 arr[i] = sc.nextInt();
+	 }
+	 low=0;high=N-1;
+		 mid=(low+high)/2;
+	 while(low<=high)
+	 { 
+		 if(key<high && key>low)
+		 {	flag=true;
+		 else flag=false;
+		 }
+		if(arr[mid]==key) 
+		{
+			System.out.println(key +"element found at pos"+(mid+1));
+		break;
+		}
+			else if(arr[mid]<key)
+			low=mid+1;
+			else
+		 	high=mid-1;
+	 
+		System.out.println("low value" +low);
+		System.out.println("high value"+high);
+		if(low>high)
+	System.out.println("No. not found");	
+		Utility.binarySearch(key,low,high,arr);
+	 
+		 
+ } */
+           
+     /****************************************************************/
+            // DayOfWeek Implementation
+            
+            public static void dayOfWeek(int m,int d,int year)
+            {
+            
+            if(m<1 || m>12)
+            
+            System.out.println("Invalid month");
+            
+            if(d<1 ||d>31)
+            
+            System.out.println("Invalid day");
+            
+            if(year<-10000 || year>10000)
+            
+            System.out.println("Invalid year");
+            
+            int y0=year - (14 - m)/12;
+            int x=y0+y0/4 - y0/100 +y0/400;
+            int m0=m+12*((14-m)/12)-2;
+            int d0=(d+x+31*m0/12)%7;
+            System.out.println(d0);
+            if(d0==0)
+            System.out.println("Sunday");
+            else if(d0==1)
+            System.out.println("Monday");
+            else if(d0==2)
+            System.out.println("Tuesday");
+            else if(d0==3)
+            System.out.println("wednesday");
+            else if(d0==4)
+            System.out.println("Thursday");
+            else if(d0==5)
+            System.out.println("Friday");
+            else
+            System.out.println("Saturday");
+
+ }
+ /************************************************************/
+            //Temperature Conversion implementation //
+           public static void temperatureConversion(double CTF,double FTC)
+       {
+            System.out.println("Celsius to Fahrenheit" +CTF);
+            System.out.println("Fahrenheit to Celsius" +FTC);
+       }
+            
+}
+	
 	

@@ -11,12 +11,15 @@
 
 
 package com.bridgelabz.algorithmprograms;
+import com.bridgelabz.utility.*;
 
 public class anagramPrime {
 	
 public static void main(String[] args)
 {
-	
+	int n=1000;
+	System.out.printf("Palindrome primes till n are %d\n", n);
+	Utility.printPalPrime(n);
 }
 
 }
