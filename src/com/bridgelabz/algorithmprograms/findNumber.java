@@ -9,30 +9,29 @@
  *
  ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.bridgelabz.utility.*;
 
 public class findNumber {
+	public static int a=0;
 	public static void main(String[] args)
 	{
-		 int N,low,high,mid;
-		 low=0;
-		 int arr[]=new int[10];
-		//System.out.println("enter n");
-		 Scanner sc=new Scanner(System.in);
-		 //n=sc.nextInt();
-		int n=Integer.parseInt(args[0]);
-		 N=2^n;
-		high=N-1;
-		 int key=n;
-		 System.out.println("enter array");
-		 for(int i=0;i<10;i++)
-		 {
-		 arr[i] = sc.nextInt();
+		 try {
+			 a=Integer.parseInt(args[0]);
 		 }
-		 Utility.binarySearch(key, low, high, arr);
-		
+		 catch(Exception e)
+		 {
+			 System.out.println("Enter command line argument");
+		 }
+		int[] arr=new int[a];
+		Arrays.sort(arr);
+		int index=Utility.findNumber(arr, 0, arr.length-1);
+		System.out.println(index);
+		System.out.println("No. is" +a);
+	     
 	}
 
 }
+
