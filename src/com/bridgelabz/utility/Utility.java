@@ -1149,7 +1149,13 @@ public static int findNumber(int[] arr,int l,int h)
     	power++;
     	}
     System.out.println("decimal representation of no. is"+decimal);
+    int n1=decimal;int other=1;
+    if(((~n1)&1)!=1)
+    	System.out.println("No. is power of 2");
+    else	
+    System.out.println("no. is not power of 2");
     }
+
     /*****************************************************************/
 	// GenericFunctionsfor sorting,searching techniques//
 	         // Binary Search    //
