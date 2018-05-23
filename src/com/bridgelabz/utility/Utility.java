@@ -963,16 +963,8 @@ public static int findNumber(int[] arr,int l,int h)
  }
  return -1;
 }
-	
-	
-	
-	
-	
-	
-	
-	
 
-	/****************************************************************/
+/****************************************************************/
 	// DayOfWeek Implementation
 
 	public static void dayOfWeek(int m, int d, int year) {
@@ -1091,7 +1083,11 @@ public static int findNumber(int[] arr,int l,int h)
 			binaryDigit += digit % 2;
 			digit /= 2;
 		}
-		System.out.println("Binary representation of " + digit + " is " + binaryDigit);
+		String reverse="";
+		int len=binaryDigit.length();
+		for(int j=len-1;j>=0;j--)
+			 reverse=reverse+binaryDigit.charAt(j);
+		System.out.println("Binary representation of " + digit + " is " +reverse);
 
 	}
 
@@ -1120,8 +1116,7 @@ public static int findNumber(int[] arr,int l,int h)
        out1=out1+reverse;
        System.out.println("Binary representation of " + digit + " is " + out1);
        System.out.println("No. of digits is " +(count+1));
-   
-     // int nib=count/4;
+       
        String nib1="";String nib2="";
        
     char[] digit1=out1.toCharArray();
@@ -1155,6 +1150,153 @@ public static int findNumber(int[] arr,int l,int h)
     	}
     System.out.println("decimal representation of no. is"+decimal);
     }
-    
-       }
+    /*****************************************************************/
+	// GenericFunctionsfor sorting,searching techniques//
+	         // Binary Search    //
+	public static <T extends Comparable<T>> int genBinarySearch(T[] arr,int l,int h,T x)
+	{
+	 if(h>=l) {
+		 int mid=l+(h-l)/2;
+		 if(arr[mid]==x)
+			 return mid;
+		 else if(arr[mid].compareTo(x)>0)
+			 return genBinarySearch(arr,l,mid-1,x);
+		 else return genBinarySearch(arr,mid+1,h,x);
+	 }
+		 return -1;
+	}
+	// LinearSearch //
+	public static<T extends Comparable<T>> int genlinearSearch(T[] arr,T x,int l,int h)
+	{
+		for(int i=l;i<=h;i++)
+		{
+		if(arr[i].compareTo(x)==0)	return i;
+		}
+		return -1;
+	}
+	// SwapFunction//
+	public static<T>void swap(T[] arr,int l,int h)
+	{
+		T temp=arr[l];
+		arr[l]=arr[h];
+		arr[h]=temp;
+	}
+	
+	//Partition Function//
+	public static<T extends Comparable<T>> int partition(T[] arr,int l,int h,int pivot)
+	{
+	T val=arr[pivot];
+	while(l<h)
+	{
+	while(arr[l].compareTo(val)<0)l++;
+	while(arr[h].compareTo(val)>0)h--;
+	}
+	return l;
+}
+	// InsertionSort //
+ //In-place Insertion Sort - O(n^2)
+	    public static <T extends Comparable <T>>void genInsertionSort(T[] arr1) {
+	        for (int i = 1; i < arr1.length; i++) {
+	            T n = arr1[i];
+	            int pos = i;
+	            while (pos > 0 && arr1[pos-1].compareTo(n)>0) {
+	                arr1[pos] = arr1[--pos];
+	            }
+	            arr1[pos] = n;
+	        }
+	    }
+	    // BubbleSort //
+	    public static<T extends Comparable<T>> void genbubbleSortList() {
+			List<Integer> myList2 = new ArrayList<Integer>();
+			int min = 2;
+			int max = 30;
+			for (int i = 0; i < (int) (Math.random() * (max - min) + min); i++) {
+				myList2.add((int) (Math.random() * 100));
+			}
+
+			System.out.println("Unsorted list 2");
+			for (int element : myList2) {
+				System.out.print(element + " ");
+			}
+			System.out.println("");
+
+			System.out.println("Bubble sorted list 2 (BubbleSort2)");
+			bubbleSort2(myList2);
+			for (int element : myList2) {
+				System.out.print(element + " ");
+			}
+		}
+
+		public static void swap21(List<Integer> x, int i, int j) {
+			Integer temp = x.get(i);
+			x.set(i, x.get(j));
+			x.set(j, temp);
+		}
+
+		public static void bubbleSort21(List<Integer> x) {
+			int mostRightSwap = x.size() - 1;
+			while (mostRightSwap > 0) {
+				for (int i = 0; i < x.size() - 1; i++) {
+					if (x.get(i) > x.get(i + 1)) {
+						swap2(x, i, i + 1);
+						mostRightSwap = i;
+					}
+				}
+			}
+		}
+// MergeSort   //
+		public static <T extends Comparable <T>>void genMergeSort() {
+			String[] ClassOne = { "Kring", "Panda", "Soliel", "Darryl", "Chan", "Matang", "Jollibee.", "Inasal" };
+			String[] ClassTwo = { "Minnie", "Kitty", "Madonna", "Miley", "Zoom-zoom", "Cristine", "Bubbles", "Ara", "Rose",
+					"Maria" };
+			String[] names = new String[ClassOne.length + ClassTwo.length];
+
+			genmergeSort(ClassOne);
+			genmergeSort(ClassTwo);
+
+			genmerge(names, ClassOne, ClassTwo);
+
+			genmergeSort(names);
+			// Arrays.sort(names);
+
+			for (String ClassThree : names) {
+				System.out.println(ClassThree);
+			}
+		}
+
+		public static<T extends Comparable <T>> void genmergeSort(T[] names) {
+			if (names.length > 2) {
+				String[] left = new String[names.length / 2];
+				String[] right = new String[names.length - names.length / 2];
+
+				for (int i = 0; i < left.length; i++) {
+					left[i] = (String) names[i];
+				}
+
+				for (int i = 0; i < right.length; i++) {
+					right[i] = (String) names[i + names.length / 2];
+				}
+
+				genmergeSort(left);
+				genmergeSort(right);
+				genmerge(names, left, right);
+			}
+		}
+
+		public static<T extends Comparable <T>> void genmerge(T[] names, String[] left, String[] right) {
+			int a = 0;
+			int b = 0;
+			for (int i = 0; i < names.length; i++) {
+				if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
+					names[i] = (T) left[a];
+					a++;
+				} else {
+					names[i] = (T) right[b];
+					b++;
+				}
+			}
+		}
+	
+		
+}
 	

@@ -1,5 +1,13 @@
-
-
+/******************************************************************************
+ *  Compilation:  javac -d bin monthlyPayment.java
+ *  Execution:    java -cp bin com.bridgelabz.util.monthlyPayment P Y R,P=principal,Y=year,R=rate of interest
+ *  Purpose: Determines the monthly payment
+ *
+ *  @author  Sarita
+ *  @version 1.0
+ *  @since  21-05-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
 import com.bridgelabz.utility.*;
 

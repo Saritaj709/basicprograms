@@ -1,3 +1,13 @@
+/******************************************************************************
+ *  Compilation:  javac -d bin temperatureConversion.java
+ *  Execution:    java -cp bin com.bridgelabz.util.temperatureConversion.java C,F where C=celsius temperature,F=fahrenheit temperature
+ *  Purpose:Converts celsius temperature to fahrenheit and vice-versa
+ *
+ *  @author  Sarita
+ *  @version 1.0
+ *  @since  21-05-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
 import  com.bridgelabz.utility.*;
 
