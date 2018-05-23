@@ -35,6 +35,7 @@ public static void main(String[] args)
 	Utility.genInsertionSort(arr2);
 	for(int item:arr2) {
 		System.out.print(item);
+		Utility.genMergeSort();
 	}
 }
 }
