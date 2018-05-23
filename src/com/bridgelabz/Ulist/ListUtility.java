@@ -10,10 +10,10 @@ import com.bridgelabz.utility.Node;
 
 public class ListUtility
 {
-public static Node readFile(Node start)
+public Node readFile(Node start)
 {
 	try {
-		FileInputStream fis=new FileInputStream("/home/JSarita/javapgm/src/com/bridgelabz/DataStructures");
+		FileInputStream fis=new FileInputStream("/home/bridgelabz/JSarita/DataStructures/list");
 		char ch;
 		String word3="";
 		while(fis.available()>0)
@@ -38,7 +38,7 @@ public static Node readFile(Node start)
 }//end of read method
 
 //Insert Words
-public static Node addWordstoList(Node node1,String str)
+public Node addWordstoList(Node node1,String str)
 {
 	Node node2=node1;
 	Node newNode=new Node();
@@ -61,7 +61,7 @@ public static Node addWordstoList(Node node1,String str)
 // End of insert method
 
 // Search Words
-public static Node searchData(Node node,String word)
+public Node searchData(Node node,String word)
 {
 	Node temp=node;
 	while(node.nextNode!=null)
@@ -83,10 +83,10 @@ public static Node searchData(Node node,String word)
    return temp;
 }//end of search word
 
-public static void writeDataToFile(String nWord)
+public void writeDataToFile(String nWord)
 {
 	try {
-		File fi=new File("/home/bridgelabz/JSarita/DataStructures/list.txt");
+		File fi=new File("/home/bridgelabz/JSarita/DataStructures/list");
 		fi.createNewFile();
 		FileWriter fw=new FileWriter(fi);
 		fw.write(nWord);
