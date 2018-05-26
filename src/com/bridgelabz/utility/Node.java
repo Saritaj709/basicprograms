@@ -5,6 +5,7 @@ public class Node<E> {
 	public String data1;
 	public int data;
 	public Node nextNode;
+	public Node next;
 	
 	//constructor
 	public Node()

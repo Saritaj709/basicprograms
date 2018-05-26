@@ -3,12 +3,12 @@
 package com.bridgelabz.datastructures;
 import com.bridgelabz.Ulist.ListUtility;
 import com.bridgelabz.utility.Node;
-import com.bridgelabz.utility.Utility;
+import com.bridgelabz.utility.Utility1;
 
 public class unorderedList {
 static Node start;
 ListUtility ListUtility=new ListUtility();
-Utility Utility=new Utility();
+Utility1 Utility=new Utility1();
 public unorderedList()
 {
      try {
@@ -37,5 +37,6 @@ public unorderedList()
      public static void main(String[] args)
  	{
     	unorderedList l1=new unorderedList(); 
+    	//System.out.println("The list of words to the file are:");
 }
      }

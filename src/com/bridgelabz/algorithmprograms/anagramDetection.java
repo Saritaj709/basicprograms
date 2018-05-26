@@ -10,7 +10,7 @@
  ******************************************************************************/
 
 package com.bridgelabz.algorithmprograms;
-import  com.bridgelabz.utility.*;
+import  com.bridgelabz.utility.Utility;
 
 public class anagramDetection {
 	public static void main(String[] args)

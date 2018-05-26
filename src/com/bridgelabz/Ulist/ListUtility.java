@@ -75,12 +75,14 @@ public Node searchData(Node node,String word)
 			return temp;
 		}
 		node=node.nextNode;
+		//System.out.println("The list of words to file are:"+temp);
 	}
    System.out.println("word is not found");
    System.out.println("the word not found is added to the file");
    System.out.println("File saved");
    temp=addWordstoList(temp,word);
    return temp;
+   
 }//end of search word
 
 public void writeDataToFile(String nWord)
@@ -96,4 +98,80 @@ public void writeDataToFile(String nWord)
 	{
 	}
 }
+//a function to insert a newnode in a list //
+/* function to insert a new_node in a list. */
+public static void sortedInsert(Node new_node)
+{
+     Node current;
+     Node head = null;
+     Node next;
+
+     /* Special case for head node */
+     if (head == null || head.data >= new_node.data)
+     {
+        new_node.next = head;
+        head = new_node;
+     }
+     else {
+
+        /* Locate the node before point of insertion. */
+        current = head;
+
+        while (current.next != null &&
+               current.next.data < new_node.data)
+              current = current.next;
+
+        new_node.next = current.next;
+        current.next = new_node;
+     }
+ }
+/* Function to create a node */
+Node newNode(int data)
+{
+   Node x = new Node();
+   return x;
 }
+
+ /* Function to print linked list */
+ public static void printList()
+ {
+     Node head = null;
+	Node temp = head;
+     while (temp != null)
+     {
+        System.out.print(temp.data+" ");
+        temp = temp.next;
+     }
+ }
+ // delete an element from a node //
+ public static void deleteNode(int key)
+ {
+     Node head = null;
+	// Store head node
+     Node temp = head, prev = null;
+
+     // If head node itself holds the key to be deleted
+     if (temp != null && temp.data == key)
+     {
+         head = temp.next; // Changed head
+         return;
+     }
+
+     // Search for the key to be deleted, keep track of the
+     // previous node as we need to change temp.next
+     while (temp != null && temp.data != key)
+     {
+         prev = temp;
+         temp = temp.next;
+     }    
+
+     // If key was not present in linked list
+     if (temp == null) return;
+
+     // Unlink the node from linked list
+     prev.next = temp.next;
+ }
+}
+
+
+
