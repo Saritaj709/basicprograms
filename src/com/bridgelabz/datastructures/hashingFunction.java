@@ -1,18 +1,4 @@
-/*****************************************************************************
-	 * Compilation:  javac -d bin orderedList.java
-	 *  Execution:    java -cp bin com.bridgelabz.util.orederedList.java File
-	 * Purpose:to read the text from a file,split it into words,change to integers,sort it and arrange it as 
-	 *         linked list.Take a user input to search a word in the list.If the 
-	 *         Word is not found then add it to the list,and if it found then remove 
-	 *         the word from the List.At the end,save the list into a file.
-	 *   @author  Sarita
-	 *  @version 1.0
-	 *  @since  05-20-2018         
-	 */
-
 package com.bridgelabz.datastructures;
-
-import com.bridgelabz.utility.Utility;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,15 +7,21 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class orderedList {
-	public static void main(String[] args) throws IOException {
-		LinkedList list = new LinkedList();
-		File fi = new File("/home/bridgelabz/JSarita/DataStructures/orderedlist");
+import com.bridgelabz.utility.Utility;
+import com.bridgelabz.utility.MyLinkedList;
+
+public class hashingFunction {
+	public static void main(String[] args) {
+		MyLinkedList[] hashtable = new MyLinkedList[100];
+		MyLinkedList list = new MyLinkedList();
+		File fi = new File("/home/bridgelabz/JSarita/DataStructures/hashtable");
 		FileReader fr = null;
 		BufferedReader br = null;
 		String[] str = new String[100];
 		String word = "";
 		int count = 0;
+		for(int i=0;i<11;i++)
+			hashtable[i]=new MyLinkedList();
 		try {
 			fr = new FileReader(fi);
 			br = new BufferedReader(fr);
@@ -48,13 +40,41 @@ public class orderedList {
 				list.add(sorted[i]);
 
 			list.display();
-			System.out.println("enter th element to search in the linked list");
+			
+			System.out.println("enter the element to search in the linked list");
 			int number = Utility.userInt();
 			int valueAt = list.search(number);
 			if (valueAt == -1) {
 				System.out.println("adding the element to the list");
-				list.add(number);
-				System.out.println("number added successfully");
+				//list.add(number);
+				for(int i=0;i<11;i++)
+				{	if(number%11==i)
+						hashtable[i].add(number);
+				}
+					/*if(number%11==0)
+						hashtable[1].add(number);
+					else if(number%11==1)
+						hashtable[1].add(number);
+					else if(number%11==2)
+						hashtable[2].add(number);
+					else if(number%11==3)
+						hashtable[3].add(number);
+				
+					else if(number%11==4)
+						hashtable[4].add(number);
+					else if(number%11==5)
+						hashtable[5].add(number);
+					else if(number%11==6)
+						hashtable[6].add(number);
+					else if(number%11==7)
+						hashtable[7].add(number);
+					else if(number%11==8)
+						hashtable[8].add(number);
+					else if(number%11==9)
+						hashtable[9].add(number);
+					else hashtable[10].add(number);
+					*/
+						System.out.println("number added successfully");
 				System.out.println("new list size becomes :");
 				System.out.println(list.size());
 				System.out.println("The elements are:");
