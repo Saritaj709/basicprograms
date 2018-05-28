@@ -1,11 +1,13 @@
 package com.bridgelabz.algorithmprograms;
-import  com.bridgelabz.utility.*;
+import  com.bridgelabz.utility.Utility;
 import java.util.Scanner;
 
 public class binaryNibble {
 	public static void main(String[] args)
 	{
-		Utility.binaryNibble();
+		System.out.println("enter the value of digit");
+		int digit=Utility.userInt();
+		Utility.binaryNibble(digit);
 	}
 
 }

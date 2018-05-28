@@ -15,6 +15,9 @@ import  com.bridgelabz.utility.*;
 public class sqrtNewton {
 public static void main(String[] args)
 {
-    Utility.sqrt();	
+	System.out.println("enter the arguments");
+	double a=Utility.userDouble();
+	double b=Utility.userDouble();
+    Utility.distance1(a,b);	
 }
 }

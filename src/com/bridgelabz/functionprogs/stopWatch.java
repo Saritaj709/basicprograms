@@ -16,8 +16,6 @@ public class stopWatch {
 
 	public static void main(String[] args)
 	 {
-		 int start=0;
-		 int end=10;
-		 Utility.stopWatch(start,end);
+		 Utility.stopWatch();
 	 }
 }

@@ -16,7 +16,10 @@ public class anagramDetection {
 	public static void main(String[] args)
 	{
    Utility a=new Utility();
-	 a.anagramDetection();
+   System.out.println("enter the strings");
+   String s1=Utility.userString();
+   String s2=Utility.userString();
+	 a.anagramDetection(s1,s2);
 	}
 
 }

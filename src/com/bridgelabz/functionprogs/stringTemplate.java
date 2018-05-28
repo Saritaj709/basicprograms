@@ -14,7 +14,9 @@ import com.bridgelabz.utility.*;
 public class stringTemplate {
 	public static void main(String[] args)
 	{
-		Utility.display();
+		System.out.println("enter the string");
+		String s1=Utility.userString();
+		Utility.stringTemplate(s1);
 	}
 
 }
