@@ -14,7 +14,8 @@ public class orderedList {
 	    class node 
 	    {
 	        int val;
-	        node next;
+	        node next = null;
+			//public int data;
 	 
 	        public node(int val) 
 	        {
@@ -89,7 +90,20 @@ public class orderedList {
 	            head = head.next;
 	        }
 	    }
-	     
+	    static int binarySearch(int arr[], int low, int high, int key)
+	    {
+	       if (high < low)
+	           return -1;
+	         
+	        /*low + (high - low)/2;*/          
+	       int mid = (low + high)/2;  
+	       if (key == arr[mid])
+	           return mid;
+	       if (key > arr[mid])
+	           return binarySearch(arr, (mid + 1), high, key);
+	       return binarySearch(arr, low, (mid -1), key);
+	    }
+	  
 	    // Driver program to test above functions
 	    public static void main(String[] args) 
 	    {
@@ -118,18 +132,18 @@ public class orderedList {
 	        System.out.println("\nenter the element to be searched\n");
 	        int search=sc.nextInt();
 	        System.out.println("\nelement to be searched is"+search);
-	          int i=0;
-	          if(arr[i]==search)
-	        	{
-	        	  search=arr[i];
-	        	System.out.println("element matched,deleting");
-	        	
-	        	ListUtility.deleteNode(arr[i]);
+	       
+	         int i=0;
+	       int index=binarySearch(arr,0, n, search);
+	       if(arr[index]==search)
+	       {
+	        	System.out.println("element is found at index "+index);
+	        		ListUtility.deleteNode(search);
+	        	System.out.println("element matched,deleting"); 	
 	        System.out.println("new list is");
 	        list.printlist(list.head);
-	        	}
-	        
-	          else if(arr[i]!=search)
+	       }
+	       if(arr[index]!=search)
 	        	{ 
 	        		list.push(search);
 	        		System.out.println("\nelement not matched,adding the element to the list");
@@ -138,7 +152,7 @@ public class orderedList {
 		        System.out.println("new list is");
 		        list.printlist(list.head);
 		        }
+	        }
 	    }
-	}
 
 
