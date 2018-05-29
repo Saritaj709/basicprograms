@@ -19,7 +19,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class unorederedList1 {
+public class UnorederedList {
 	public static void main(String[] args) throws IOException {
 		LinkedList list = new LinkedList();
 		File fi =new File("/home/bridgelabz/JSarita/DataStructures/list");
