@@ -23,7 +23,7 @@ import java.io.IOException;
 
 public class orderedList {
 	public static void main(String[] args) throws IOException {
-		LinkedList list = new LinkedList();
+		MyLinkedList list = new MyLinkedList();
 		File fi = new File("/home/bridgelabz/JSarita/DataStructures/orderedlist");
 		FileReader fr = null;
 		BufferedReader br = null;

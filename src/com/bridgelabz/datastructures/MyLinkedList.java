@@ -2,10 +2,11 @@ package com.bridgelabz.datastructures;
 
 import java.awt.List;
 import java.util.Collections;
+import java.util.NoSuchElementException;
 
 import com.bridgelabz.utility.Node;
 
-public class LinkedList<T extends Comparable <T>>{
+public class MyLinkedList<T extends Comparable <T>>{
 	class Node {
 		public Node next;
 		public T data;
@@ -49,11 +50,11 @@ public class LinkedList<T extends Comparable <T>>{
 	}
 	public void display()
 	{
-		if(size==0)
-		{
-			System.out.println("Linked List is empty");
-			return;
-		}
+//		if(size==0)
+//		{
+//			System.out.println("Linked List is empty");
+//			return;
+//		}
 	 Node temp=head;
 	 while(temp!=null)
 	 {
@@ -137,4 +138,32 @@ public class LinkedList<T extends Comparable <T>>{
 				}
 				return -1;
 			}
-}
+			public T pop() {
+				if(isEmpty())
+					throw new NoSuchElementException("UnderFlow Exception");
+				Node t=head;
+				int count=0;
+				while(count< index(null) -1) {
+					t=t.next;
+					count++;
+				}
+				Object temp=t.next.data;
+				t.next=t.next.next;
+				size--;
+				return (T) temp;
+				}
+
+			private int index(Object object) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+			   public Comparable removeFront() {
+			        if (head == null) {
+			            return "Empty Queue";
+			        }
+			        T data = head.data;
+			        head = head.next;
+			        size--;
+			        return (Comparable) data;
+			    }
+			}

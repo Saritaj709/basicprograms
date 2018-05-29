@@ -2,16 +2,18 @@ package com.bridgelabz.utility;
 
 import java.awt.List;
 import java.util.Collections;
+import java.util.NoSuchElementException;
 
 import com.bridgelabz.utility.Node;
 
-public class MyLinkedList<T extends Comparable<T>> {
+public class singlyLinkedList<T extends Comparable<T>> {
 	class Node {
 		public Node next;
-		public T data;
+		public Comparable data;
+		public Node first;
 
-		public Node(Object data) {
-			this.data = (T) data;
+		public Node(Comparable data) {
+			this.data =  data;
 		}
 	}
 
@@ -125,4 +127,7 @@ public class MyLinkedList<T extends Comparable<T>> {
 		}
 		return -1;
 	}
+	
+	 
 }
+

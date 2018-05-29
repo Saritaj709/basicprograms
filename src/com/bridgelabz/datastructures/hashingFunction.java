@@ -6,98 +6,75 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.MyLinkedList;
+import com.bridgelabz.utility.singlyLinkedList;
 
 public class hashingFunction {
-	public static void main(String[] args) {
-		MyLinkedList[] hashtable = new MyLinkedList[100];
-		MyLinkedList list = new MyLinkedList();
-		File fi = new File("/home/bridgelabz/JSarita/DataStructures/hashtable");
-		FileReader fr = null;
-		BufferedReader br = null;
-		String[] str = new String[100];
-		String word = "";
-		int count = 0;
-		for(int i=0;i<11;i++)
-			hashtable[i]=new MyLinkedList();
-		try {
-			fr = new FileReader(fi);
-			br = new BufferedReader(fr);
-			word = br.readLine();
-			while (word != null) {
-				str = word.split(",");
-				count++;
-				break;
-			}
-			Integer[] integers = new Integer[str.length];
-			for (int i = 0; i < integers.length; i++)
-				integers[i] = Integer.parseInt(str[i]);
-			Integer[] sorted = new Integer[100];
-			sorted = Utility.bubbleSort(integers);
-			for (int i = 0; i < sorted.length; i++)
-				list.add(sorted[i]);
+		static int count = 0;
+	    static int rem = 0;
 
-			list.display();
-			
-			System.out.println("enter the element to search in the linked list");
-			int number = Utility.userInt();
-			int valueAt = list.search(number);
-			if (valueAt == -1) {
-				System.out.println("adding the element to the list");
-				//list.add(number);
-				for(int i=0;i<11;i++)
-				{	if(number%11==i)
-						hashtable[i].add(number);
-				}
-					/*if(number%11==0)
-						hashtable[1].add(number);
-					else if(number%11==1)
-						hashtable[1].add(number);
-					else if(number%11==2)
-						hashtable[2].add(number);
-					else if(number%11==3)
-						hashtable[3].add(number);
-				
-					else if(number%11==4)
-						hashtable[4].add(number);
-					else if(number%11==5)
-						hashtable[5].add(number);
-					else if(number%11==6)
-						hashtable[6].add(number);
-					else if(number%11==7)
-						hashtable[7].add(number);
-					else if(number%11==8)
-						hashtable[8].add(number);
-					else if(number%11==9)
-						hashtable[9].add(number);
-					else hashtable[10].add(number);
-					*/
-						System.out.println("number added successfully");
-				System.out.println("new list size becomes :");
-				System.out.println(list.size());
-				System.out.println("The elements are:");
-				FileWriter fw = new FileWriter(fi);
-				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(word + "," + number);
-				bw.flush();
-				list.display();
-			} else {
-				list.remove(valueAt);
-				System.out.println("element removed successfully");
-				System.out.println("The new list elements are:");
-				list.display();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				fr.close();
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+	    public static void main(String[] args) throws IOException {
+	        MyLinkedList list = new MyLinkedList<>();
+	        HashMap map = new HashMap<>();
+	        int size1 = list.size();
+	        String number = "";
+	        MyLinkedList[] arrayList = new MyLinkedList[11];
+	        for (int i = 0; i < arrayList.length; i++) {
+	            arrayList[i] = new MyLinkedList<Integer>();
+	        }
+	        File f = new File("/home/bridgelabz/JSarita/DataStructures/hashtable");
+	        FileReader fs = null;
+	        FileWriter fWriter = null;
+	        BufferedWriter bWriter = null;
+	        ArrayList<String> a = new ArrayList<String>();
+	        BufferedReader fo = null;
+	        try {
+	            fs = new FileReader(f);
+	            fo = new BufferedReader(fs);
+	            number = fo.readLine();
+	            while (number != null) {
+	                String[] str = number.split(",");
+	                for (int i = 0; i < str.length; i++) {
+	                    count++;
+	                    a.add(str[i]);
+	                }
+	                break;
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        int array[] = new int[a.size()];
+	        for (int i = 0; i < a.size(); i++) {
+	            array[i] = Integer.parseInt(a.get(i));
+	        }
+	        for (int i = 0; i < array.length; i++) {
+	            list.add(array[i]);
+	        }
+	        list.display();
+	        for (int i = 0; i < array.length; i++) {
+	            Integer value = (Integer) list.removeFront();
+	            rem = value % 11;
+	            map.put(rem, value);
+	        }
+	        System.out.println(map.entrySet());
+	        System.out.println("Enter the word to search in the linked list");
+	        int number1 = 0;
+	        number1 = Utility.userInt();
+	        if (map.containsValue(number1)) {
+	            int key = number1 % 11;
+	            map.remove(key);
+	            System.out.println("Word removed Successfully");
+	            System.out.println(map.entrySet());
+	        } else {
+	            int key1 = number1 % 11;
+	            map.put(key1, map.get(key1) + "," + number1);
+	            System.out.println(map.entrySet());
+	        }
+	    }
+
 	}
-}
+
+	  

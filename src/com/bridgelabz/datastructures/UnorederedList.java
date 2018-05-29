@@ -19,9 +19,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.bridgelabz.utility.Utility;
+
 public class UnorederedList {
 	public static void main(String[] args) throws IOException {
-		LinkedList list = new LinkedList();
+		MyLinkedList list = new MyLinkedList();
 		File fi =new File("/home/bridgelabz/JSarita/DataStructures/list");
 		FileReader fr=null;
 		BufferedReader br=null;
@@ -50,7 +52,7 @@ public class UnorederedList {
 		System.out.println(list.size());
 		String newword;
 		System.out.println("enter the word to be searched from the list");
-		newword=Utility1.userString();;
+		newword=Utility.userString();;
 		int pos=list.search(newword);
 		System.out.println(pos);
 		if(pos<list.size()&& pos>=0)
