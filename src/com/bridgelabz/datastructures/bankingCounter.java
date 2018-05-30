@@ -11,16 +11,16 @@
  ******************************************************************************/
 
 package com.bridgelabz.datastructures;
-import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
 
 public class bankingCounter {
 public static void main(String[] args)
 {
-    Scanner sc=new Scanner(System.in);	
     int cash=0;
 	System.out.println("The initial balance is"+cash);
 	System.out.println("enter the no. of people entering");
-	int n=sc.nextInt();
+	int n=Utility.userInt();
 	System.out.println("The no. of people entering are:"+n);
 	 queueOperations queueOperations=new queueOperations(n);
 	char ch;
@@ -31,14 +31,14 @@ public static void main(String[] args)
 		System.out.println("3. peek  \n");
 	    System.out.println("4. CheckEmpty \n");
 	    System.out.println("5. CheckFull \n");
-	    int choice=sc.nextInt();
+	    int choice=Utility.userInt();
 	    int i = 0;
 	    switch(choice)
 	    {
 	    case 1:int amount1=0;
 	    	try{
 	    		System.out.println("enter the amount to deposit\n");
-	    	amount1=queueOperations.deposit(sc.nextInt());
+	    	amount1=queueOperations.deposit(Utility.userInt());
 	    	}
 	    catch(Exception e)
 	    {
@@ -59,7 +59,7 @@ public static void main(String[] args)
 	    	System.out.println("error:"+e.getMessage());
 	    }
 	    System.out.println("enter the amount to be withdrawn");
-	    int amount=sc.nextInt();
+	    int amount=Utility.userInt();
 	    if(amount<=cash)
 	    	{
 	    	System.out.println("withdraw successful"+queueOperations.withdraw());
@@ -67,7 +67,6 @@ public static void main(String[] args)
 	    	}
 	    else
 	    	System.out.println("insuficient amount in bank,pls wait...for deposit");
-	    	//queueOperations.deposit(i);
 	    break;
 	    case 3:
 	    	try {
@@ -87,9 +86,9 @@ public static void main(String[] args)
 	}
 	queueOperations.displayCash(cash);
 	System.out.println("Do you want to continue,(type y or n)"); 
-	ch=sc.next().charAt(0);
+	ch=Utility.userChar();
 }
-while(ch=='Y' || ch=='y');
+while(ch=='y'||ch=='Y');
 }    	
 }
 

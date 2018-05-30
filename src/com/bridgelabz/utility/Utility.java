@@ -1,6 +1,7 @@
 package com.bridgelabz.utility;
 
 import java.util.Scanner;
+import java.awt.SystemColor;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.security.SecureRandom;
@@ -30,7 +31,21 @@ public class Utility {
 		String str = sc.nextLine();
 		return str;
 	}
-
+ public static char userChar()
+ {
+	 char[] ch=sc.next().toCharArray();
+	 
+	 try
+	 {
+		 if(ch.length>1)
+		 ch=sc.nextLine().toCharArray();
+	 }
+	 catch(Exception e)
+	 {
+		System.out.println("invalid input");
+	 }
+	 return ch[0];
+ }
 	public static double userDouble() {
 		try {
 			double n = sc.nextDouble();
@@ -1576,123 +1591,35 @@ public class Utility {
 
 	/***************************************************************************/
 	// Calender.java implementation //
+	// Date validator functions //
 	/**
-	 * @param m
-	 *            passes month of the year as command line argument
 	 * @param d
-	 *            passes day of the year as command line argument
-	 * @param year
-	 *            passes year as commandline argument
+	 *            input date
+	 * @param m
+	 *            input month
+	 * @param y
+	 *            input year
+	 * @return
 	 */
-	public static void calenderAll(int m, int d, int year) {
-		int y0 = year - (14 - m) / 12;
-		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
-		int m0 = m + 12 * ((14 - m) / 12) - 2;
-		int d0 = (d + x + 31 * m0 / 12) % 7;
-		System.out.println("Firstdayof year is " + d0);
+	public static boolean dateValidator(int d, int m, int y) {
 
-		for (int month = 1; month <= 12; month++) {
-			int daysMonth = 0;
-			String monthDisplay = "January";
-
-			switch (month) {
-			case 1:
-				monthDisplay = "January";
-				daysMonth = 31;
-				break;
-
-			case 2:
-				monthDisplay = "February";
-				int leapYear = 0;
-				while (leapYear > -1) {
-					// Count all years that are divisible by 4 to be a leap year.
-					leapYear += 4;
-					if (year == leapYear) {
-						daysMonth = 29;
-						break;
-					}
-
-					else {
-						daysMonth = 28;
-					}
-				}
-				break;
-
-			case 3:
-				monthDisplay = "March";
-				daysMonth = 31;
-				break;
-
-			case 4:
-				monthDisplay = "April";
-				daysMonth = 30;
-				break;
-
-			case 5:
-				monthDisplay = "May";
-				daysMonth = 31;
-				break;
-
-			case 6:
-				monthDisplay = "June";
-				daysMonth = 30;
-				break;
-
-			case 7:
-				monthDisplay = "July";
-				daysMonth = 31;
-				break;
-
-			case 8:
-				monthDisplay = "August";
-				daysMonth = 31;
-				break;
-
-			case 9:
-				monthDisplay = "September";
-				daysMonth = 30;
-				break;
-
-			case 10:
-				monthDisplay = "October";
-				daysMonth = 31;
-				break;
-
-			case 11:
-				monthDisplay = "November";
-				daysMonth = 30;
-				break;
-
-			case 12:
-				monthDisplay = "December";
-				daysMonth = 31;
-				break;
-
-			// If the month is not recognized, dialog box will be displayed, and then exits
-			// program.
-			default:
-				System.out.print("Invalid: Your month is not recognized. ");
-				System.exit(0);
-
-			}
-
-			System.out.println("  " + monthDisplay + " " + year);
-			System.out.println("_____________________________________");
-			System.out.println("  S   M  T   W   Th   F  S");
-
-			// Print spaces depending on the day the month starts.
-			int firstDayEachMonth = (daysMonth + d0) % 7;
-			for (int space = 1; space <= firstDayEachMonth; space++)
-				System.out.print(" ");
-			for (int daysDisplay = 1; daysDisplay <= daysMonth; daysDisplay++) {
-				if (d0 % 7 == 0)
-					System.out.println();
-
-				System.out.printf("%3d ", daysDisplay);
-				d0 += 1;
-			}
-			System.out.println();
+		boolean b = true;
+		if (((m == 4 || m == 6 || m == 9 || m == 11) && (d > 30)) || (d > 31)
+				|| (m == 2 && y % 100 == 0 && y % 400 != 0 && d > 28) || (m == 2 && y % 400 == 0 && d > 29)
+				|| (m == 2 && y % 100 != 0 && y % 4 != 0 && d > 28)
+				|| (m == 2 && y % 100 != 0 && y % 4 == 0 && d > 29)) {
+			b = false;
+		} else {
+			b = true;
 		}
+		return b;
+	}
+
+	public static int dayStart(int d, int m, int y) {
+		int y0 = y - (14 - m) / 12;
+		int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+		int m0 = m + 12 * ((14 - m) / 12) - 2;
+		return ((d + x + (31 * m0) / 12) % 7);
 
 	}
 
@@ -1700,20 +1627,25 @@ public class Utility {
 	// Calender for particular month implementation //
 	private static int numDays = 0;
 	private static int h = 0;
-
-	public static boolean leap(int year) {
-		if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0)) {
+/**
+ * @param y input year
+ * @return true if year is leap year else false
+ */
+	public static boolean leap(int y) {
+		if (((y % 4 == 0) && !(y % 100 == 0)) || (y % 400 == 0)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-
-	public static void firstDayOfYear(int year) {
+/**
+ * @param y input year
+ */
+	public static void firstDayOfYear(int y) {
 		int month = 13;
-		year--;
-		h = (1 + (int) (((month + 1) * 26) / 10.0) + year + (int) (year / 4.0) + 6 * (int) (year / 100.0)
-				+ (int) (year / 400.0)) % 7;
+		y--;
+		h = (1 + (int) (((month + 1) * 26) / 10.0) + y + (int) (y / 4.0) + 6 * (int) (y / 100.0)
+				+ (int) (y / 400.0)) % 7;
 		String dayName = "";
 		switch (h) {
 		case 0:
@@ -1740,14 +1672,17 @@ public class Utility {
 		}
 		System.out.println("The first day of the year is " + dayName);
 	}
-
-	public static void firstDayOfMonth(int month, int year) {
-		if (month == 1 || month == 2) {
-			month += 12;
-			year--;
+	/**
+	 * @param m input month
+	 * @param y input year
+	 */
+	public static void firstDayOfMonth(int m, int y) {
+		if (m == 1 || m == 2) {
+			m += 12;
+			y--;
 		}
-		h = (1 + (int) (((month + 1) * 26) / 10.0) + year + (int) (year / 4.0) + 6 * (int) (year / 100.0)
-				+ (int) (year / 400.0)) % 7;
+		h = (1 + (int) (((m + 1) * 26) / 10.0) + y + (int) (y / 4.0) + 6 * (int) (y / 100.0)
+				+ (int) (y / 400.0)) % 7;
 		String dayName = "";
 		switch (h) {
 		case 0:
@@ -1774,21 +1709,27 @@ public class Utility {
 		}
 		System.out.println("The first day of the month is " + dayName);
 	}
-
-	public static void numDaysInMonth(int month, int year) {
+/**
+ * @param m input month
+ * @param y input year
+ */
+	public static void numDaysInMonth(int m, int y) {
 		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-		if (month == 2 && leap(year))
-			days[month] = 29;
-		numDays = days[month];
+		if (m == 2 && leap(y))
+			days[m] = 29;
+		numDays = days[m];
 		System.out.println("The number of days in the month is " + numDays);
 	}
-
-	public static void printCal(int month, int year) {
+/**
+ * @param m input month
+ * @param y input year
+ */
+	public static void printCal(int m, int y) {
 		String[] monthNames = { "", "January", "February", "March", "April", "May", "June", "July", "August",
 				"September", "October", "November", "December" };
 
-		System.out.println("    " + monthNames[month] + " " + year);
+		System.out.println("    " + monthNames[m] + " " + y);
 		System.out.println("Su Mo Tu We Th Fr Sa");
 		for (int i = 0; i < h - 1; i++)
 			System.out.print("   ");
@@ -1802,16 +1743,16 @@ public class Utility {
 	/************************************************************************/
 	// To check prime number//
 	/**
-	 * @param number
-	 *            input
+	 * @param n
+	 *            number input
 	 * @return true if prime,false if not prime
 	 */
-	public static boolean findPrime(int number) {
-		if (number == 0 || number == 1) {
+	public static boolean findPrime(int n) {
+		if (n == 0 || n == 1) {
 			return false;
 		}
-		for (int i = 2; i <= number / 2; i++) {
-			if (number % i == 0)
+		for (int i = 2; i <= n / 2; i++) {
+			if (n % i == 0)
 				return false;
 		}
 		return true;
@@ -1820,24 +1761,33 @@ public class Utility {
 	/**************************************************************************/
 	// To check if the no. is Anagram //
 	/**
-	 * @param string1 input
-	 * @param string2 input
+	 * @param s1
+	 *            string input
+	 * @param s2
+	 *            string input
 	 * @return
 	 */
-	public static boolean isAnagram(String string1, String string2) {
-		string1 = removeSpace(string1);
-		string2 = removeSpace(string2);
-		if (string1.length() != string2.length())
+	public static boolean isAnagram(String s1, String s2) {
+		s1 = removeSpace(s1);
+		s2 = removeSpace(s2);
+		if (s1.length() != s2.length())
 			return false;
-		string1 = toLowerCase(string1);
-		string2 = toLowerCase(string2);
-		boolean b = check(string1, string2);
+		s1 = toLowerCase(s1);
+		s2 = toLowerCase(s2);
+		boolean b = check(s1, s2);
 		return b;
 	}
 
-	private static boolean check(String string1, String string2) {
-		char ch1[] = string1.toCharArray();
-		char ch2[] = string2.toCharArray();
+	/**
+	 * @param s1
+	 *            string input
+	 * @param s2
+	 *            string input
+	 * @return
+	 */
+	private static boolean check(String s1, String s2) {
+		char ch1[] = s1.toCharArray();
+		char ch2[] = s2.toCharArray();
 		ch1 = sort(ch1);
 		ch2 = sort(ch2);
 		for (int i = 0; i < ch1.length; i++) {
@@ -1848,7 +1798,8 @@ public class Utility {
 	}
 
 	/**
-	 * @param ch input char array
+	 * @param ch
+	 *            input char array
 	 * @return char array
 	 */
 	private static char[] sort(char[] ch) {
@@ -1865,66 +1816,33 @@ public class Utility {
 	}
 
 	/**
-	 * @param string1
+	 * @param s1
+	 *            string
 	 * @return
 	 */
-	private static String toLowerCase(String string1) {
-		char ch[] = string1.toCharArray();
+	private static String toLowerCase(String s1) {
+		char ch[] = s1.toCharArray();
 		for (int i = 0; i < ch.length; i++) {
 			if (ch[i] >= 65 && ch[i] <= 91)
 				ch[i] = (char) (ch[i] + 32);
 		}
-		string1 = new String(ch);
-		return string1;
+		s1 = new String(ch);
+		return s1;
 	}
 
 	/**
-	 * @param string1
+	 * @param s1
+	 *            string
 	 * @return
 	 */
-	private static String removeSpace(String string1) {
-		char ch[] = string1.toCharArray();
-		string1 = "";
+	private static String removeSpace(String s1) {
+		char ch[] = s1.toCharArray();
+		s1 = "";
 		for (int i = 0; i < ch.length; i++) {
 			if (ch[i] != ' ')
-				string1 = string1 + ch[i];
+				s1 = s1 + ch[i];
 		}
-		return string1;
+		return s1;
 	}
 	/***********************************************************************/
-	// Date validator functions //
-	/**
-	 * @param d input date
-	 * @param m input month
-	 * @param y input year
-	 * @return
-	 */
-	public static boolean dateValidator(int d, int m, int y) {
-
-		boolean b = true;
-		if(((m == 4 || m == 6 || m == 9 || m == 11) && (d >30)) 
-				|| (d>31)
-				|| (m==2 && y % 100 == 0 && y % 400 != 0 && d > 28) 
-				|| (m==2 && y % 400 == 0 && d > 29)
-				|| (m==2 && y % 100 != 0 && y % 4 != 0 && d > 28) 
-				|| (m==2 && y % 100 != 0 && y % 4 == 0 && d > 29))
-		{
-			b = false;
-		} 
-        else {
-            b=true;
-        }		
-		return b;
-}
-	
-	public static int dayStart(int d,int m,int y)
-	{
-		int y0 = y - (14 - m) / 12;
-		int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
-		int m0 = m + 12 * ((14 - m) / 12) - 2;
-		return ((d + x + (31 * m0) / 12) % 7);
-		
-		
-	}
-	
 }

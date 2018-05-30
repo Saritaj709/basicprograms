@@ -1,3 +1,12 @@
+/*****************************************************************************
+ * Compilation:  javac -d bin stackCalender.java
+ *  Execution:    java -cp bin com.bridgelabz.util.stackCalender.java month,year
+ * Purpose:to generate 2D array of a stacklist and store month and week days
+           in respective arrays and implement using stack of linked list
+ *   @author  Sarita
+ *  @version 1.0
+ *  @since  05-30-2018         
+ */
 package com.bridgelabz.datastructures;
 
 import com.bridgelabz.utility.Utility;

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.singlyLinkedList;
 
 public class hashingFunction {
 		static int count = 0;

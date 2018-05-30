@@ -1,3 +1,13 @@
+/*****************************************************************************
+ * Compilation:  javac -d bin primeAnagram2D.java
+ *  Execution:    java -cp bin com.bridgelabz.util.primeAnagram2D.java 0 to 1000
+ * Purpose:to generate 2D array of a linkedlist and store prime no.s
+           that are anagram in first array and normal no.s in 2nd array 
+           and print them
+ *   @author  Sarita
+ *  @version 1.0
+ *  @since  05-30-2018         
+ */
 package com.bridgelabz.datastructures;
 
 import com.bridgelabz.utility.Utility;

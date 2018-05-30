@@ -1,3 +1,12 @@
+/*****************************************************************************
+ * Compilation:  javac -d bin prime2DQueue.java
+ *  Execution:    java -cp bin com.bridgelabz.util.prime2DQueue.java 0 to 1000
+ * Purpose:to generate 2D array of a linkedlist and store prime no.s in 
+           first array and normal no.s in 2nd array and print them uing queue
+ *   @author  Sarita
+ *  @version 1.0
+ *  @since  05-30-2018         
+ */
 package com.bridgelabz.datastructures;
 
 import com.bridgelabz.utility.Utility;
