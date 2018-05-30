@@ -6,7 +6,7 @@
  *   @author  Sarita
  *  @version 1.0
  *  @since  05-30-2018         
- */
+ /*****************************************************************************/
 package com.bridgelabz.datastructures;
 
 import com.bridgelabz.utility.Utility;
@@ -62,9 +62,6 @@ public class stackCalender {
 				a[i][j].push(first[i][j].pop());
 			}
 		}
-
-		// System.out.println("printing");
-		// System.out.println(a[0][6].size());
 		System.out.println(months[m] + " " + y);
 		System.out.println();
 		for (int i = 0; i < 7; i++) {

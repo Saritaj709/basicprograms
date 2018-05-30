@@ -30,5 +30,6 @@ public class stackList {
 	// to display the stack
 	public void display() {
 		li.displayln();
+		
 	}
 }

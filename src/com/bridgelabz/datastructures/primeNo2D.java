@@ -31,7 +31,6 @@ public class primeNo2D {
 	            }
 	        }
 	        for (int i = 0; i < 10; i++) {
-	            System.out.println("");
 	            System.out.print(i + " " + "|");
 	            for (int j = 0; j < 100; j++) {
 	                array[i][j].display();

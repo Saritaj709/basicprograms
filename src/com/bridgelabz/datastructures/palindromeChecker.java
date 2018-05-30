@@ -9,14 +9,13 @@
  *
  ******************************************************************************/
 package com.bridgelabz.datastructures;
-import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
 
 public class palindromeChecker {
 	public static void main(String[] args) {
-		//String str = "radar";
-		Scanner sc=new Scanner(System.in);
 		System.out.println("enter the string");
-		String str=sc.nextLine();
+		String str = Utility.userString();
 		int count = 0;
 		char[] ch = str.toCharArray();
 		deque<String> dq = new deque<>();
@@ -33,8 +32,7 @@ public class palindromeChecker {
 				remcount++;
 				System.out.println("not palindrome");
 				break;
-			} 
-			else
+			} else
 				System.out.println("palindrome");
 			break;
 		}

@@ -31,21 +31,19 @@ public class Utility {
 		String str = sc.nextLine();
 		return str;
 	}
- public static char userChar()
- {
-	 char[] ch=sc.next().toCharArray();
-	 
-	 try
-	 {
-		 if(ch.length>1)
-		 ch=sc.nextLine().toCharArray();
-	 }
-	 catch(Exception e)
-	 {
-		System.out.println("invalid input");
-	 }
-	 return ch[0];
- }
+
+	public static char userChar() {
+		char[] ch = sc.next().toCharArray();
+
+		try {
+			if (ch.length > 1)
+				ch = sc.nextLine().toCharArray();
+		} catch (Exception e) {
+			System.out.println("invalid input");
+		}
+		return ch[0];
+	}
+
 	public static double userDouble() {
 		try {
 			double n = sc.nextDouble();
@@ -309,6 +307,7 @@ public class Utility {
 			System.out.println("coupon no. are:" + getCoupon(count));
 		return count;
 	}
+
 	/*********************************************************************************/
 	/**
 	 * @param String
@@ -450,22 +449,26 @@ public class Utility {
 	 *            takes the no. of times the game is to be played
 	 */
 
-	public static void gambler(int stake,int goal,int trials) {
-		 int bets = 0;        
-	        int wins = 0;    
-	        for (int t = 0; t < trials; t++) {
-	            int cash = stake;
-	            while (cash > 0 && cash < goal) {
-	                bets++;
-	                if (Math.random() < 0.5) cash++;     
-	                else                     cash--;     
-	            }
-	            if (cash == goal) wins++;                
-	        }
-	        System.out.println(wins + " wins of " + trials);
-	        System.out.println("Percent of games won = " + 100.0 * wins / trials);
-	        System.out.println("Avg # bets           = " + 1.0 * bets / trials);
+	public static void gambler(int stake, int goal, int trials) {
+		int bets = 0;
+		int wins = 0;
+		for (int t = 0; t < trials; t++) {
+			int cash = stake;
+			while (cash > 0 && cash < goal) {
+				bets++;
+				if (Math.random() < 0.5)
+					cash++;
+				else
+					cash--;
+			}
+			if (cash == goal)
+				wins++;
 		}
+		System.out.println(wins + " wins of " + trials);
+		System.out.println("Percent of games won = " + 100.0 * wins / trials);
+		System.out.println("Avg # bets           = " + 1.0 * bets / trials);
+	}
+
 	/***************************************************************************/
 	// Euclidean distance implementation //
 	/**
@@ -1072,30 +1075,25 @@ public class Utility {
 
 	/***********************************************************************/
 	// Finding number using binary search //
-/*	/**
-	 * @param arr
-	 *            is the array of input integers
-	 * @param l
-	 *            is the start position
-	 * @param h
-	 *            is the end position
-	 * @param x
-	 *            is the value to be searched
+	/*
+	 * /**
+	 * 
+	 * @param arr is the array of input integers
+	 * 
+	 * @param l is the start position
+	 * 
+	 * @param h is the end position
+	 * 
+	 * @param x is the value to be searched
+	 * 
 	 * @return the index of array where the value is found
 	 */
-/*	public static int intBinarySearch(int arr[], int l, int h, int x) {
-		if (h >= l) {
-			int mid = l + (h - l) / 2;
-			if (arr[mid] == x)
-				return mid;
-			else if (x < arr[mid])
-				return intBinarySearch(arr, l, mid - 1, x);
-			else
-				return intBinarySearch(arr, mid + 1, h, x);
-		}
-		return -1;
-	}
-*/
+	/*
+	 * public static int intBinarySearch(int arr[], int l, int h, int x) { if (h >=
+	 * l) { int mid = l + (h - l) / 2; if (arr[mid] == x) return mid; else if (x <
+	 * arr[mid]) return intBinarySearch(arr, l, mid - 1, x); else return
+	 * intBinarySearch(arr, mid + 1, h, x); } return -1; }
+	 */
 	/**
 	 * @param arr
 	 *            is the array of integers
@@ -1290,12 +1288,12 @@ public class Utility {
 	 *            is the input integer no.
 	 */
 	public static void binaryNibble(int digit) {
-        binaryDigit(digit);
+		binaryDigit(digit);
 		String nib1 = "";
 		String nib2 = "";
-		String out1="";
-		int count=0;
-		String reverse="";
+		String out1 = "";
+		int count = 0;
+		String reverse = "";
 		for (int i = 0; i < 8 - count; i++) {
 			out1 += 0;
 		}
@@ -1505,6 +1503,7 @@ public class Utility {
 		}
 		return integers;
 	}
+
 	/***************************************************************************/
 	// Calender.java implementation //
 	// Date validator functions //
@@ -1538,6 +1537,7 @@ public class Utility {
 		return ((d + x + (31 * m0) / 12) % 7);
 
 	}
+
 	/************************************************************************/
 	// To check prime number//
 	/**
