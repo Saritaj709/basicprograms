@@ -10,9 +10,7 @@
  ******************************************************************************/
 
 package com.bridgelabz.algorithmprograms;
-import java.util.Scanner;
-
-import com.bridgelabz.utility.*;
+import com.bridgelabz.utility.Utility;
 
 public class sortingTechniques {
 	public static void main(String[] args)
@@ -22,13 +20,12 @@ public class sortingTechniques {
 		searchsort.BinarySearchMethodInt();
 		double t2=searchsort.endTimer();
 		System.out.println("time elapsed is"+(t2-t1));
-		Scanner sc=new Scanner(System.in);
 		System.out.println("enter the string");
-		String str=sc.nextLine();
+		String str=Utility.userString();
 		String str1[]=str.split(" ");
 		System.out.println("enter the word to search");
 		
-		String key=sc.next();
+		String key=Utility.userString();
 		t1=searchsort.startTimer();
 		Utility.binarySearchWord(str1,key);
 		t2=searchsort.endTimer();

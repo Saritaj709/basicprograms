@@ -309,15 +309,6 @@ public class Utility {
 			System.out.println("coupon no. are:" + getCoupon(count));
 		return count;
 	}
-
-	/***********************************************************************/
-	/*
-	 * public String createRandomCode(int codeLength) { char[]
-	 * ch="abcdefghijklmnopqrst1234567890".toCharArray(); StringBuilder sb=new
-	 * StringBuilder(); Random r=new SecureRandom(); for(int i=0;i<codeLength;i++) {
-	 * char c=(char)[r.nextInt(ch.length)]; sb.append(c); } String
-	 * output=sb.toString(); System.out.println(output); return output; }
-	 */
 	/*********************************************************************************/
 	/**
 	 * @param String
@@ -451,43 +442,30 @@ public class Utility {
 
 	// Gambler program implementation //
 	/**
-	 * @param $Stake
+	 * @param Stake
 	 *            takes the cash the player is having
-	 * @param $goal
+	 * @param goal
 	 *            takes the cash amount where bet is won
-	 * @param noOfTimes
+	 * @param trials
 	 *            takes the no. of times the game is to be played
 	 */
 
-	public static void gambler() {
-		int $Stake, $Goal, noOfTimes;
-		System.out.println("enter $stake");
-		$Stake = sc.nextInt();
-		System.out.println("enter $goal");
-		$Goal = sc.nextInt();
-		System.out.println("enter noOfTimes");
-		noOfTimes = sc.nextInt();
-		double bets = 0, noOfWins = 0, noOfLoose = 0;
-		if (noOfTimes > 0) {
-			while ($Stake > 0 && $Stake != $Goal) {
-				if (Math.random() > 0.5) {
-					bets++;
-					$Stake = $Stake + 1;
-					System.out.println("won");
-				} else {
-					$Stake = $Stake - 1;
-					System.out.println("loose");
-				}
-			}
-			System.out.println();
-			System.out.println(noOfWins + " wins " + noOfTimes + "number of times");
-			System.out.println(noOfLoose + "loose" + noOfTimes + "number of times");
-			System.out.println("Percentage of game won= " + (noOfWins * 100) / (noOfWins + noOfLoose));
-			System.out.println("Percentage of game loosed=" + (noOfLoose * 100) / (noOfWins + noOfLoose));
-			System.out.println("avg. no. of bets= " + bets / noOfTimes);
+	public static void gambler(int stake,int goal,int trials) {
+		 int bets = 0;        
+	        int wins = 0;    
+	        for (int t = 0; t < trials; t++) {
+	            int cash = stake;
+	            while (cash > 0 && cash < goal) {
+	                bets++;
+	                if (Math.random() < 0.5) cash++;     
+	                else                     cash--;     
+	            }
+	            if (cash == goal) wins++;                
+	        }
+	        System.out.println(wins + " wins of " + trials);
+	        System.out.println("Percent of games won = " + 100.0 * wins / trials);
+	        System.out.println("Avg # bets           = " + 1.0 * bets / trials);
 		}
-	}
-
 	/***************************************************************************/
 	// Euclidean distance implementation //
 	/**
@@ -739,23 +717,12 @@ public class Utility {
 	static int binarySearch(int arr[], int start, int end, int search) {
 		if (end >= start) {
 			int mid = start + (end - start) / 2;
-
-			// If the element is present at the middle itself
 			if (arr[mid] == search)
 				return mid;
-
-			// If element is smaller than mid, then
-			// it can only be present in left subarray
 			if (arr[mid] > search)
 				return binarySearch(arr, start, mid - 1, search);
-
-			// Else the element can only be present
-			// in right subarray
 			return binarySearch(arr, mid + 1, end, search);
 		}
-
-		// We reach here when element is not present
-		// in array
 		return -1;
 	}
 
@@ -1078,43 +1045,6 @@ public class Utility {
 	/**************************************************************/
 	// Insertion sort for list of strings //
 	/**
-	 * @param list[]
-	 *            contains all the elements in list
-	 */
-	public static void insertionSortList() {
-		String Mercury = "Mercury", Venus = "Venus", Earth = "Earth", Mars = "Mars", Jupiter = "Jupiter",
-				Saturn = "Saturn", Uranus = "Uranus", Neptune = "Neptune", Pluto = "Pluto";
-		String list[] = { Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto };
-
-		System.out.println("Array contents before sorting...");
-		System.out.print(list[0]);
-		System.out.print(" ");
-		System.out.print(list[1]);
-		System.out.print(" ");
-		System.out.print(list[2]);
-		System.out.print(" ");
-		System.out.print(list[3]);
-		System.out.print(" ");
-		System.out.print(list[4]);
-		System.out.println("");
-		System.out.println("************************************");
-
-		Utility.insertionSort(list);
-
-		System.out.println("************************************");
-		System.out.println("Array contents after sorting...");
-		System.out.print(list[0]);
-		System.out.print(" ");
-		System.out.print(list[1]);
-		System.out.print(" ");
-		System.out.print(list[2]);
-		System.out.print(" ");
-		System.out.print(list[3]);
-		System.out.print(" ");
-		System.out.print(list[4]);
-	}
-
-	/**
 	 * @param list
 	 *            contains array of strings
 	 */
@@ -1142,7 +1072,7 @@ public class Utility {
 
 	/***********************************************************************/
 	// Finding number using binary search //
-	/**
+/*	/**
 	 * @param arr
 	 *            is the array of input integers
 	 * @param l
@@ -1153,7 +1083,7 @@ public class Utility {
 	 *            is the value to be searched
 	 * @return the index of array where the value is found
 	 */
-	public static int intBinarySearch(int arr[], int l, int h, int x) {
+/*	public static int intBinarySearch(int arr[], int l, int h, int x) {
 		if (h >= l) {
 			int mid = l + (h - l) / 2;
 			if (arr[mid] == x)
@@ -1165,7 +1095,7 @@ public class Utility {
 		}
 		return -1;
 	}
-
+*/
 	/**
 	 * @param arr
 	 *            is the array of integers
@@ -1360,30 +1290,17 @@ public class Utility {
 	 *            is the input integer no.
 	 */
 	public static void binaryNibble(int digit) {
-		int count = 0;
-		String binaryDigit = "";
-		String out1 = "";
-		int temp = digit;
-		while (temp > 0) {
-			count++;
-			binaryDigit += temp % 2;
-			temp /= 2;
-		}
-		String reverse = "";
-		int len = binaryDigit.length();
-		for (int j = len - 1; j >= 0; j--) {
-			reverse = reverse + binaryDigit.charAt(j);
-		}
+        binaryDigit(digit);
+		String nib1 = "";
+		String nib2 = "";
+		String out1="";
+		int count=0;
+		String reverse="";
 		for (int i = 0; i < 8 - count; i++) {
 			out1 += 0;
 		}
 		out1 = out1 + reverse;
 		System.out.println("Binary representation of " + digit + " is " + out1);
-		System.out.println("No. of digits is " + (count + 1));
-
-		String nib1 = "";
-		String nib2 = "";
-
 		char[] digit1 = out1.toCharArray();
 		for (int i = 0; i < 4; i++)
 			nib1 += digit1[i];
@@ -1588,7 +1505,6 @@ public class Utility {
 		}
 		return integers;
 	}
-
 	/***************************************************************************/
 	// Calender.java implementation //
 	// Date validator functions //
@@ -1622,124 +1538,6 @@ public class Utility {
 		return ((d + x + (31 * m0) / 12) % 7);
 
 	}
-
-	/*********************************************************************/
-	// Calender for particular month implementation //
-	private static int numDays = 0;
-	private static int h = 0;
-/**
- * @param y input year
- * @return true if year is leap year else false
- */
-	public static boolean leap(int y) {
-		if (((y % 4 == 0) && !(y % 100 == 0)) || (y % 400 == 0)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-/**
- * @param y input year
- */
-	public static void firstDayOfYear(int y) {
-		int month = 13;
-		y--;
-		h = (1 + (int) (((month + 1) * 26) / 10.0) + y + (int) (y / 4.0) + 6 * (int) (y / 100.0)
-				+ (int) (y / 400.0)) % 7;
-		String dayName = "";
-		switch (h) {
-		case 0:
-			dayName = "Saturday";
-			break;
-		case 1:
-			dayName = "Sunday";
-			break;
-		case 2:
-			dayName = "Monday";
-			break;
-		case 3:
-			dayName = "Tuesday";
-			break;
-		case 4:
-			dayName = "Wednesday";
-			break;
-		case 5:
-			dayName = "Thursday";
-			break;
-		default:
-			dayName = "Friday";
-			break;
-		}
-		System.out.println("The first day of the year is " + dayName);
-	}
-	/**
-	 * @param m input month
-	 * @param y input year
-	 */
-	public static void firstDayOfMonth(int m, int y) {
-		if (m == 1 || m == 2) {
-			m += 12;
-			y--;
-		}
-		h = (1 + (int) (((m + 1) * 26) / 10.0) + y + (int) (y / 4.0) + 6 * (int) (y / 100.0)
-				+ (int) (y / 400.0)) % 7;
-		String dayName = "";
-		switch (h) {
-		case 0:
-			dayName = "Saturday";
-			break;
-		case 1:
-			dayName = "Sunday";
-			break;
-		case 2:
-			dayName = "Monday";
-			break;
-		case 3:
-			dayName = "Tuesday";
-			break;
-		case 4:
-			dayName = "Wednesday";
-			break;
-		case 5:
-			dayName = "Thursday";
-			break;
-		default:
-			dayName = "Friday";
-			break;
-		}
-		System.out.println("The first day of the month is " + dayName);
-	}
-/**
- * @param m input month
- * @param y input year
- */
-	public static void numDaysInMonth(int m, int y) {
-		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-		if (m == 2 && leap(y))
-			days[m] = 29;
-		numDays = days[m];
-		System.out.println("The number of days in the month is " + numDays);
-	}
-/**
- * @param m input month
- * @param y input year
- */
-	public static void printCal(int m, int y) {
-		String[] monthNames = { "", "January", "February", "March", "April", "May", "June", "July", "August",
-				"September", "October", "November", "December" };
-
-		System.out.println("    " + monthNames[m] + " " + y);
-		System.out.println("Su Mo Tu We Th Fr Sa");
-		for (int i = 0; i < h - 1; i++)
-			System.out.print("   ");
-		for (int i = 1; i <= numDays; i++) {
-			System.out.printf("%2d ", i);
-			if (((i + h - 1) % 7 == 0) || (i == numDays))
-				System.out.println();
-		}
-	}
-
 	/************************************************************************/
 	// To check prime number//
 	/**
