@@ -252,4 +252,9 @@ public class singleLinkedList {
 		        count--;
 		        return temp.data;
 		    }
+
+			public static singleLinkedList list() {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		}

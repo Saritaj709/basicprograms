@@ -1820,10 +1820,8 @@ public class Utility {
 	/**************************************************************************/
 	// To check if the no. is Anagram //
 	/**
-	 * @param string1
-	 *            input
-	 * @param string2
-	 *            input
+	 * @param string1 input
+	 * @param string2 input
 	 * @return
 	 */
 	public static boolean isAnagram(String string1, String string2) {
@@ -1850,8 +1848,8 @@ public class Utility {
 	}
 
 	/**
-	 * @param ch
-	 * @return
+	 * @param ch input char array
+	 * @return char array
 	 */
 	private static char[] sort(char[] ch) {
 		for (int i = 0; i < ch.length; i++) {
@@ -1893,4 +1891,40 @@ public class Utility {
 		}
 		return string1;
 	}
+	/***********************************************************************/
+	// Date validator functions //
+	/**
+	 * @param d input date
+	 * @param m input month
+	 * @param y input year
+	 * @return
+	 */
+	public static boolean dateValidator(int d, int m, int y) {
+
+		boolean b = true;
+		if(((m == 4 || m == 6 || m == 9 || m == 11) && (d >30)) 
+				|| (d>31)
+				|| (m==2 && y % 100 == 0 && y % 400 != 0 && d > 28) 
+				|| (m==2 && y % 400 == 0 && d > 29)
+				|| (m==2 && y % 100 != 0 && y % 4 != 0 && d > 28) 
+				|| (m==2 && y % 100 != 0 && y % 4 == 0 && d > 29))
+		{
+			b = false;
+		} 
+        else {
+            b=true;
+        }		
+		return b;
+}
+	
+	public static int dayStart(int d,int m,int y)
+	{
+		int y0 = y - (14 - m) / 12;
+		int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+		int m0 = m + 12 * ((14 - m) / 12) - 2;
+		return ((d + x + (31 * m0) / 12) % 7);
+		
+		
+	}
+	
 }
