@@ -14,7 +14,7 @@ import com.bridgelabz.utility.Utility;
 
 public class primeNo2D {
 		public static <T extends Comparable<T>> void main(String[] args) {
-	        MyLinkedList array[][] =  new MyLinkedList[11][];
+	        MyLinkedList<Integer> array[][] =  new MyLinkedList[11][];
 	        for (int i = 0; i < 10; i++) {
 	            array[i] = new MyLinkedList[100];
 	            for (int j = 0; j < 100; j++) {

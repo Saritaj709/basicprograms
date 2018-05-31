@@ -20,9 +20,7 @@ public class QList<T extends Comparable<T>> {
 		rear = null;
 	}
 
-	// Method to add an key to the queue.
 	public void enqueue(T key) {
-		// Create a new LL node
 		QNode<T> temp = new QNode<T>(key);
 		// If queue is empty, then new node is front and rear both
 		if (rear == null) {

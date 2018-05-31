@@ -148,4 +148,16 @@ public class MyLinkedList<T extends Comparable<T>> {
 		size--;
 		return (Comparable) data;
 	}
+	public T getData(int index)
+	{
+		if(head==null) return null;
+		Node temp=head;
+		int pos=0;
+		while(temp.next!=null && pos!=index)
+		{
+			temp=temp.next;
+			pos++;
+		}
+		return temp.data;
+	}
 }
