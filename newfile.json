@@ -1,10 +1,12 @@
-{
+[
+	{
     "Inventory":"items",
-  "Rice":{
+  "Rice":[
        "name":"Rice1",
         "weight":50,
          "priceperkg":60
-},
+],"totalprice":3000
+	},
  "Pulse":{
           "name":"Pulse1",
            "weight":60,
@@ -14,5 +16,5 @@
             "name":"wheat1",
              "weight":50,
              "priceperkg":36
-}
- 
+},
+ ]

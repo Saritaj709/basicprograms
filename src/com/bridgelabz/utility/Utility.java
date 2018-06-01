@@ -31,7 +31,11 @@ public class Utility {
 		String str = sc.nextLine();
 		return str;
 	}
-
+   public static String userNext()
+   {
+	   String str=sc.next();
+	   return str;
+   }
 	public static char userChar() {
 		char[] ch = sc.next().toCharArray();
 

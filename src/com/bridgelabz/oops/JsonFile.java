@@ -8,7 +8,7 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 
-public class jsonFile {
+public class JsonFile {
 @SuppressWarnings("unchecked")
 public static void main(String[] args) throws FileNotFoundException
 {
@@ -17,7 +17,7 @@ public static void main(String[] args) throws FileNotFoundException
 	//ob.put("NameofItem","Rice,pulse,wheat");
 	ob.put("Inventory1","Item1");
 	ob.put("Inventory2","Item2");
-	ob.put("Inventory2","Item2");
+	ob.put("Inventory4","Item2");
 	
 	//ob.put("price",70);
 	JSONArray ja=new JSONArray();
