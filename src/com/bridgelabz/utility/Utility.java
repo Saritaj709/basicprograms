@@ -73,7 +73,7 @@ public class Utility {
 	 *            is the index of last array
 	 */
 
-	public static void countTriplets(int a[], int x) {
+	public static int countTriplets(int a[], int x) {
 		int count = 0;
 		for (int i = 0; i < x - 2; i++) {
 			for (int j = i + 1; j < x - 1; j++) {
@@ -84,7 +84,7 @@ public class Utility {
 				}
 			}
 		}
-		System.out.println("No.of triplets:" + count);
+		return count;
 	}
 
 	/***********************************************************************************/
@@ -232,15 +232,8 @@ public class Utility {
 
 	static String[] board;
 	static String turn;
-	private static int value;
-	private static String[] getCoupon;
-
-	public static void stopWatch() {
-		long start = System.nanoTime();
-		System.out.println(" ");
-		long end = System.nanoTime();
+	public static void stopWatch(long start,long end) {
 		System.out.println("calculating time from " + start + "nano secs" + end + "micro sec");
-
 		long total_time = end - start;
 		System.out.println("Time measured is:  " + total_time + "nano secs");
 
@@ -271,10 +264,7 @@ public class Utility {
 	 * @param c
 	 *            is a double input
 	 */
-	public static void quadratic() {
-		double a = sc.nextDouble();
-		double b = sc.nextDouble();
-		double c = sc.nextDouble();
+	public static void quadratic(double a,double b,double c) {
 		double delta, Root1, Root2;
 		delta = b * b - 4 * a * c;
 		if (delta < 0) {
@@ -321,10 +311,10 @@ public class Utility {
 	 * @param String
 	 *            name takes,user input which is to be replaces <<username>>
 	 */
-	public static void stringTemplate(String name) {
+	public static String stringTemplate(String name) {
 		String str = "Hello <<username>> How are you ?";
 		str = str.replace("<<username>>", name);
-		System.out.println(str);
+		return str;
 	}
 
 	/*********************************************************************/
@@ -424,10 +414,7 @@ public class Utility {
 	 *            determined
 	 */
 
-	public static void primeFactors() {
-		int n;
-		System.out.println("enter the no.");
-		n = sc.nextInt();
+	public static void primeFactors(int n) {
 		while (n % 2 == 0) {
 			System.out.println(2 + " ");
 			n /= 2;
