@@ -5,7 +5,7 @@ import com.bridgelabz.init.userDetails;
 import com.bridgelabz.oops.utility.Utility1;
 import com.bridgelabz.utility.Utility;
 
-public class regularExpression {	 
+public class RegularExpression {	 
 	   public static void main(String[] args)
 	   {
 		   Utility1 u1=new Utility1();

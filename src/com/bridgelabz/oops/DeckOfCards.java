@@ -1,5 +1,7 @@
 package com.bridgelabz.oops;
 
+import java.util.Arrays;
+
 public class DeckOfCards {
 	static String[] suits = { "clubs", "diamond", "hearts", "spades" };
 	static String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace" };
@@ -22,6 +24,7 @@ public class DeckOfCards {
 		for (int i = 0; i < 4; i++) {
 			System.out.println();
 			System.out.println("Cards received by player " + (i + 1) + " are :");
+			Arrays.sort(deck[i]);
 			System.out.println("*******************************");
 			for (int j = 0; j < 9; j++) {
 				System.out.println(deck[i][j]);
