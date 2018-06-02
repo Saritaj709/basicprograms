@@ -1,6 +1,6 @@
 package com.bridgelabz.algorithmprograms;
 import com.bridgelabz.utility.*;
-public class dayOfWeek {
+public class DayOfWeek {
 	public static void main(String[] args)
 	{
 		int m,d,year;

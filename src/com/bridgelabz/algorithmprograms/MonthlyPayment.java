@@ -9,9 +9,9 @@
  *
  ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
-import com.bridgelabz.utility.*;
+import com.bridgelabz.utility.Utility;
 
-public class monthlyPayment {
+public class MonthlyPayment {
 	public static void main(String[] args)
 	{ double P = 0,Y = 0,R = 0;
        try {

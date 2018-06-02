@@ -9,9 +9,9 @@
  *
  ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
-import  com.bridgelabz.utility.*;
+import  com.bridgelabz.utility.Utility;
 
-public class temperatureConversion {
+public class TemperatureConversion {
 public static void main(String[] args)
 {
 	 double C,F,CTF,FTC;

@@ -11,7 +11,7 @@
 package com.bridgelabz.algorithmprograms;
 import com.bridgelabz.utility.*;
 import java.util.Scanner;
-public class binarySearchWord {
+public class BinarySearchWord {
 
 	public static void main(String[] args)
 	{

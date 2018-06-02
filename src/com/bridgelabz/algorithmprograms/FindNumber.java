@@ -10,11 +10,9 @@
  ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
 import java.util.Arrays;
-import java.util.Scanner;
+import com.bridgelabz.utility.Utility;
 
-import com.bridgelabz.utility.*;
-
-public class findNumber {
+public class FindNumber {
 	public static int a=0;
 	public static void main(String[] args)
 	{

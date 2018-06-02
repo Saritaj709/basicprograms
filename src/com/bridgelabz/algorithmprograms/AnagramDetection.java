@@ -12,7 +12,7 @@
 package com.bridgelabz.algorithmprograms;
 import  com.bridgelabz.utility.Utility;
 
-public class anagramDetection {
+public class AnagramDetection {
 	public static void main(String[] args)
 	{
    Utility a=new Utility();

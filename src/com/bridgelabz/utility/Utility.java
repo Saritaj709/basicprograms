@@ -1,6 +1,9 @@
 package com.bridgelabz.utility;
 
 import java.util.Scanner;
+
+import com.bridgelabz.datastructures.MyLinkedList;
+
 import java.awt.SystemColor;
 import java.io.PrintWriter;
 import java.lang.Math;
@@ -31,11 +34,12 @@ public class Utility {
 		String str = sc.nextLine();
 		return str;
 	}
-   public static String userNext()
-   {
-	   String str=sc.next();
-	   return str;
-   }
+
+	public static String userNext() {
+		String str = sc.next();
+		return str;
+	}
+
 	public static char userChar() {
 		char[] ch = sc.next().toCharArray();
 
@@ -917,8 +921,9 @@ public class Utility {
 			} else if (key.compareTo(s[i]) > 0) {
 				end = mid - 1;
 				mid = (start + end) / 2;
-			} else
+			} else {
 				System.out.println("word not found");
+			}
 		}
 	}
 
@@ -1079,25 +1084,6 @@ public class Utility {
 
 	/***********************************************************************/
 	// Finding number using binary search //
-	/*
-	 * /**
-	 * 
-	 * @param arr is the array of input integers
-	 * 
-	 * @param l is the start position
-	 * 
-	 * @param h is the end position
-	 * 
-	 * @param x is the value to be searched
-	 * 
-	 * @return the index of array where the value is found
-	 */
-	/*
-	 * public static int intBinarySearch(int arr[], int l, int h, int x) { if (h >=
-	 * l) { int mid = l + (h - l) / 2; if (arr[mid] == x) return mid; else if (x <
-	 * arr[mid]) return intBinarySearch(arr, l, mid - 1, x); else return
-	 * intBinarySearch(arr, mid + 1, h, x); } return -1; }
-	 */
 	/**
 	 * @param arr
 	 *            is the array of integers
@@ -1646,5 +1632,6 @@ public class Utility {
 		}
 		return s1;
 	}
-	/***********************************************************************/
+	
+	/*********************************************************************/
 }
