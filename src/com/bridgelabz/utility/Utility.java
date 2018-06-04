@@ -1,6 +1,9 @@
 package com.bridgelabz.utility;
 
 import java.util.Scanner;
+
+import com.bridgelabz.datastructures.MyLinkedList;
+
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.util.Arrays;
@@ -11,35 +14,35 @@ public class Utility {
 	/**
 	 * static variable is declared to create static object of Scanner class
 	 */
-	static Scanner sc = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 
 	public static int userInt() {
 		try {
-			int n = sc.nextInt();
+			int n = scanner.nextInt();
 			return n;
 		} catch (Exception e) {
-			sc.nextLine();
+			scanner.nextLine();
 			System.out.println("Invalid input,enter again");
 			return userInt();
 		}
 	}
 
 	public static String userString() {
-		String str = sc.nextLine();
+		String str = scanner.nextLine();
 		return str;
 	}
 
 	public static String userNext() {
-		String str = sc.next();
+		String str = scanner.next();
 		return str;
 	}
 
 	public static char userChar() {
-		char[] ch = sc.next().toCharArray();
+		char[] ch = scanner.next().toCharArray();
 
 		try {
 			if (ch.length > 1)
-				ch = sc.nextLine().toCharArray();
+				ch = scanner.nextLine().toCharArray();
 		} catch (Exception e) {
 			System.out.println("invalid input");
 		}
@@ -48,10 +51,10 @@ public class Utility {
 
 	public static double userDouble() {
 		try {
-			double n = sc.nextDouble();
+			double n = scanner.nextDouble();
 			return n;
 		} catch (Exception e) {
-			sc.nextLine();
+			scanner.nextLine();
 			System.out.println("Invalid input,enter again");
 			return userDouble();
 		}
@@ -143,7 +146,7 @@ public class Utility {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				a[i][j] = sc.nextInt();
+				a[i][j] = scanner.nextInt();
 			}
 		}
 		return a;
@@ -157,7 +160,7 @@ public class Utility {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				b[i][j] = sc.nextDouble();
+				b[i][j] = scanner.nextDouble();
 			}
 		}
 		return b;
@@ -171,7 +174,7 @@ public class Utility {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				c[i][j] = sc.nextLine();
+				c[i][j] = scanner.nextLine();
 			}
 		}
 		return c;
@@ -226,7 +229,8 @@ public class Utility {
 
 	static String[] board;
 	static String turn;
-	public static void stopWatch(long start,long end) {
+
+	public static void stopWatch(long start, long end) {
 		System.out.println("calculating time from " + start + "nano secs" + end + "micro sec");
 		long total_time = end - start;
 		System.out.println("Time measured is:  " + total_time + "nano secs");
@@ -258,7 +262,7 @@ public class Utility {
 	 * @param c
 	 *            is a double input
 	 */
-	public static void quadratic(double a,double b,double c) {
+	public static void quadratic(double a, double b, double c) {
 		double delta, Root1, Root2;
 		delta = b * b - 4 * a * c;
 		if (delta < 0) {
@@ -324,7 +328,7 @@ public class Utility {
 		int numFlips;
 		int head = 0;
 		System.out.println("enter no. of times to flip coin");
-		numFlips = sc.nextInt();
+		numFlips = scanner.nextInt();
 		while (loopCount <= numFlips) {
 			double result = Math.random();
 			if (result <= .5)
@@ -345,7 +349,7 @@ public class Utility {
 	 */
 	public static void leapYear() {
 		System.out.print("Enter any year:");
-		int year = sc.nextInt();
+		int year = scanner.nextInt();
 		boolean flag = false;
 		if (year % 400 == 0)
 			flag = true;
@@ -390,7 +394,7 @@ public class Utility {
 		double N;
 		double sum = 0.0;
 		System.out.println("enter the value of N till where sum is to be calculated");
-		N = sc.nextInt();
+		N = scanner.nextInt();
 		System.out.println("N value :" + N);
 		if (N == 0)
 			System.out.println("invalid");
@@ -582,28 +586,23 @@ public class Utility {
 	// First Program
 	/******************************************************************/
 
-	// Two detect of two strings are Anagram (having same characters in both) //
-	/**
-	 * @param s1
-	 *            is the first string
-	 * @param s2
-	 *            is the 2nd string
-	 */
-	public static void anagramDetection(String s1, String s2) {
-		boolean isAnagram = false;
-		if (s1.length() == s2.length()) {
-			char[] s1AsChar = s1.toCharArray();
-			char[] s2AsChar = s2.toCharArray();
-			Arrays.sort(s1AsChar);
-			Arrays.sort(s2AsChar);
-			isAnagram = Arrays.equals(s1AsChar, s2AsChar);
-			if (isAnagram == true)
-				System.out.println("Strings are anagram");
-			else
-				System.out.println("Strings are not anagram");
-		}
-
-	}
+	/*
+	 * // Two detect of two strings are Anagram (having same characters in both) //
+	 *//**
+		 * @param s1
+		 *            is the first string
+		 * @param s2
+		 *            is the 2nd string
+		 *//*
+			 * public static void anagramDetection(String s1, String s2) { boolean isAnagram
+			 * = false; if (s1.length() == s2.length()) { char[] s1AsChar =
+			 * s1.toCharArray(); char[] s2AsChar = s2.toCharArray(); Arrays.sort(s1AsChar);
+			 * Arrays.sort(s2AsChar); isAnagram = Arrays.equals(s1AsChar, s2AsChar); if
+			 * (isAnagram == true) System.out.println("Strings are anagram"); else
+			 * System.out.println("Strings are not anagram"); }
+			 * 
+			 * }
+			 */
 
 	/************************************************************************/
 	// To find Prime numbers from 0 to 1000
@@ -614,61 +613,53 @@ public class Utility {
 	 *            is the second/inner loop index
 	 */
 	public static void primeNumbers() {
-		int i;
-		for (i = 0; i <= 1000; i++) {
-			for (int j = 2; j < i; j++) {
+		String primeNo = "";
+		for (int i = 0; i <= 1000; i++) {
+			int count = 0;
+			for (int j = i; j >= 1; j--) {
 
-				if (i % j == 0) {// System.out.println("Not a prime no.");
-					break;
+				if (i % j == 0) {
+
+					count = count + 1; // System.out.println("Not a prime no.");
 				}
 			}
-			System.out.println("prime no.s are:" + i);
+			if (count == 2) {
+				primeNo = primeNo + i + " ";
+			}
 		}
+		System.out.println("prime no.s are:" + primeNo);
 	}
 
 	/**************************************************************************/
-	// Prime numbers that are anagram and palindrome
-	/**
-	 * @param num
-	 *            is the original number which is given as input
-	 * @param dupNum
-	 *            is the no. generated by system
-	 * @return true if given prime no. are anagram and palindrome
-	 */
+	// Prime numbers that are anagram and palindrome //
 
-	public static boolean oneDigit(int num) {
-		return (num >= 0 && num < 10);
-	}
-
-	public static boolean isPalUtil(int num, int dupNum) {
-		if (oneDigit(num))
-			return (num == (dupNum) % 10);
-		if (!isPalUtil(num / 10, dupNum))
-			return false;
-		dupNum /= 10;
-		return (num % 10 == (dupNum % 10));
-	}
-
-	public static boolean isPal(int num) {
-		if (num < 0)
-			num = -num;
-		int dupNum = num;
-		return isPalUtil(num, dupNum);
-	}
-
-	public static void printPalPrime(int n) {
-		boolean prime[] = new boolean[n + 1];
-		Arrays.fill(prime, true);
-		for (int p = 2; p * p <= n; p++) {
-			if (prime[p])
-				for (int i = p * 2; i <= n; i += p) {
-					prime[i] = false;
+	public static void primePalindrome() {
+		boolean isPrime;
+		int i, rem, temp, reverse;
+		for (int num = 0; num < 1000; num++) {
+			isPrime = true;
+			if (num >= 2) {
+				for (i = 2; i <= (num / 2); i++) {
+					isPrime = true;
+					if (num >= 2) {
+						for (i = 2; i <= (num / 2); i++) {
+							if ((num % i) == 0)
+								isPrime = false;
+						}
+						if (isPrime) {
+							temp = num;
+							reverse = 0;
+							while (temp != 0) {
+								rem = temp % 10;
+								reverse = (reverse * 10) + rem;
+								temp /= 10;
+							}
+							if (reverse == num) {
+								System.out.print(num + " ");
+							}
+						}
+					}
 				}
-		}
-
-		for (int p = 2; p <= n; p++) {
-			if (prime[p] && isPal(p)) {
-				System.out.print(p + " ");
 			}
 		}
 	}
@@ -873,39 +864,31 @@ public class Utility {
 	/************************************************************************/
 	// Binary search for words //
 	/**
-	 * @param s
+	 * @param str
 	 *            is the string of array
 	 * @param key
 	 *            is the word to be searched
 	 */
-	public static void binarySearchWord(String s[], String key) {
-		String temp = "";
-		for (int i = 0; i < s.length - 1; i++) {
-			for (int j = i + 1; j < s.length; j++) {
-				if (s[i].equals(s[j])) {
-					temp = s[i];
-					s[i] = s[j];
-					s[j] = temp;
-				}
-			}
-		}
+	public static String binarySearchWord(String str[], String key) {
+		Arrays.sort(str);
 		int start = 0;
-		int end = s.length - 1;
-		for (int i = 0; i < s.length; i++) {
+		int end = str.length - 1;
+		for (int i = 0; i < str.length; i++) {
 			int mid = (start + end) / 2;
-			if (key.compareTo(s[i]) == 0) {
+			if (key.compareTo(str[i]) == 0) {
 				System.out.println("word found at :" + i);
-			} else if (key.compareTo(s[i]) < 0) {
+			} else if (key.compareTo(str[i]) < 0) {
 				start = mid + 1;
 				mid = (start + end) / 2;
 
-			} else if (key.compareTo(s[i]) > 0) {
+			} else if (key.compareTo(str[i]) > 0) {
 				end = mid - 1;
 				mid = (start + end) / 2;
 			} else {
 				System.out.println("word not found");
 			}
 		}
+		return key;
 	}
 
 	/*******************************************************************/
@@ -922,13 +905,13 @@ public class Utility {
 			myList2.add((int) (Math.random() * 100));
 		}
 
-		System.out.println("Unsorted list 2");
+		System.out.println("Unsorted list2");
 		for (int element : myList2) {
 			System.out.print(element + " ");
 		}
 		System.out.println("");
 
-		System.out.println("Bubble sorted list 2 (BubbleSort2)");
+		System.out.println("Bubble sorted list2 (BubbleSort2)");
 		bubbleSort2(myList2);
 		for (int element : myList2) {
 			System.out.print(element + " ");
@@ -1079,7 +1062,7 @@ public class Utility {
 			int mid = (l + h) / 2;
 			System.out.println("is your no. greater than " + (mid + 1));
 			System.out.println("press 1 if yes,press 0 if no else press anythig");
-			int a = sc.nextInt();
+			int a = scanner.nextInt();
 			switch (a) {
 			case 1:
 				return findNumber(arr, mid + 1, h);
@@ -1259,7 +1242,7 @@ public class Utility {
 	 *            is the input integer no.
 	 */
 	public static void binaryNibble(int digit) {
-		binaryDigit(digit);
+		/*binaryDigit(digit);
 		String nib1 = "";
 		String nib2 = "";
 		String out1 = "";
@@ -1270,6 +1253,28 @@ public class Utility {
 		}
 		out1 = out1 + reverse;
 		System.out.println("Binary representation of " + digit + " is " + out1);
+		*/
+		int count = 0;
+		String binaryDigit = "";
+		while (digit > 0) {
+			count++;
+			binaryDigit += digit % 2;
+			digit /= 2;
+		}
+		String reverse = "";
+		int len = binaryDigit.length();
+		for (int j = len - 1; j >= 0; j--)
+			reverse = reverse + binaryDigit.charAt(j);
+		System.out.println("Binary representation of " + digit + " is " + reverse);
+		String out1 = "";
+		for (int i = 0; i < 8 - count; i++) {
+			out1 += 0;
+		}
+		out1 = out1 + reverse;
+		System.out.println("Binary representation of " + digit + " is " + out1);
+	
+		String nib1="";
+		String nib2="";
 		char[] digit1 = out1.toCharArray();
 		for (int i = 0; i < 4; i++)
 			nib1 += digit1[i];
@@ -1300,12 +1305,24 @@ public class Utility {
 		}
 		System.out.println("decimal representation of no. is" + decimal);
 		int n1 = decimal;
-		if (((~n1) & 1) != 1)
+		if(isPowerOfTwo(n1)==true)
 			System.out.println("No. is power of 2");
 		else
 			System.out.println("no. is not power of 2");
 	}
 
+	static boolean isPowerOfTwo(int n)
+	{
+	if(n==0)
+		return false;
+	while(n!=1)
+	{
+		if(n%2!=0)
+			return false;
+		n=n/2;
+	}
+	return true;
+	}
 	/*****************************************************************/
 	// GenericFunctionsfor sorting,searching techniques//
 	// Binary Search //
@@ -1597,6 +1614,7 @@ public class Utility {
 		}
 		s1 = new String(ch);
 		return s1;
+
 	}
 
 	/**
@@ -1613,6 +1631,23 @@ public class Utility {
 		}
 		return s1;
 	}
-	
+
 	/*********************************************************************/
+	// DeckOfCards //
+	static String[] suits = { "clubs", "diamond", "hearts", "spades" };
+	static String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace" };
+
+	public static <T> MyLinkedList[][] shuffleCards(MyLinkedList[][] deck, T[] suits2, T[] ranks2) {
+		for (int i = 0; i < suits2.length; i++) {
+			for (int j = 0; j < ranks2.length; j++) {
+				int ran1 = (int) (Math.random() * suits2.length);
+				int ran2 = (int) (Math.random() * ranks2.length);
+
+				MyLinkedList temp = deck[ran1][ran2];
+				deck[ran1][ran2] = deck[i][j];
+				deck[i][j] = temp;
+			}
+		}
+		return deck;
+	}
 }

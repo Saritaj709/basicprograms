@@ -24,7 +24,7 @@ public class SortingTechniques {
 		String str1[]=str.split(" ");
 		System.out.println("enter the word to search");
 		
-		String key=Utility.userString();
+		String key=Utility.userNext();
 		t1=Utility.startTimer();
 		Utility.binarySearchWord(str1,key);
 		t2=Utility.endTimer();

@@ -1,5 +1,5 @@
 package com.bridgelabz.algorithmprograms;
-import  com.bridgelabz.utility.*;
+import  com.bridgelabz.utility.Utility;
 
 public class BubbleSortList {
 

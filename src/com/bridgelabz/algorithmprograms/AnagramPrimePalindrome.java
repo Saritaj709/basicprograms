@@ -9,17 +9,15 @@
  *
  ******************************************************************************/
 
-
 package com.bridgelabz.algorithmprograms;
-import com.bridgelabz.utility.*;
 
-public class AnagramPrime {
-	
-public static void main(String[] args)
-{
-	int n=1000;
-	System.out.printf("Palindrome primes till n are %d\n", n);
-	Utility.printPalPrime(n);
-}
+import com.bridgelabz.utility.Utility;
+
+public class AnagramPrimePalindrome {
+
+	public static void main(String[] args) {
+		System.out.println("Palindrome primes till 1000 are :");
+		Utility.primePalindrome();
+	}
 
 }

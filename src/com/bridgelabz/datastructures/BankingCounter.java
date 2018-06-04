@@ -22,9 +22,9 @@ public static void main(String[] args)
 	System.out.println("enter the no. of people entering");
 	int n=Utility.userInt();
 	System.out.println("The no. of people entering are:"+n);
-	 queueOperations queueOperations=new queueOperations(n);
+	 QueueOperations queueOperations=new QueueOperations(n);
 	queueOperations.displayCash(cash);
-	DequeOperations.switchCases();
+	queueOperations.switchCases();
 }    	
 }
 

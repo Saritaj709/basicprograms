@@ -15,7 +15,7 @@ import com.bridgelabz.utility.Utility;
 public class PrimeAnagram2DStack {
 	 @SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
-	        stackUsingLinkedList s = new stackUsingLinkedList();
+	        StackUsingLinkedList s = new StackUsingLinkedList();
 	        MyLinkedList[][] array = new MyLinkedList[100][];
 	        for (int i = 0; i < 10; i++) {
 	            array[i] = new MyLinkedList[100];

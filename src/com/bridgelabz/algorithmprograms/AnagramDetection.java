@@ -10,16 +10,20 @@
  ******************************************************************************/
 
 package com.bridgelabz.algorithmprograms;
-import  com.bridgelabz.utility.Utility;
+
+import com.bridgelabz.utility.Utility;
 
 public class AnagramDetection {
-	public static void main(String[] args)
-	{
-   Utility a=new Utility();
-   System.out.println("enter the strings");
-   String s1=Utility.userString();
-   String s2=Utility.userString();
-	 a.anagramDetection(s1,s2);
+	public static void main(String[] args) {
+		System.out.println("enter the strings");
+		String s1 = Utility.userString();
+		String s2 = Utility.userString();
+		// Utility.anagramDetection(s1,s2);
+		if (Utility.isAnagram(s1, s2) == true) {
+			System.out.println("The given Strings are anagram");
+		} else {
+			System.out.println("the given strings are not anagram");
+		}
 	}
 
 }

@@ -9,20 +9,18 @@
  *
  ******************************************************************************/
 package com.bridgelabz.algorithmprograms;
-import com.bridgelabz.utility.*;
-import java.util.Scanner;
+import com.bridgelabz.utility.Utility;
+
 public class BinarySearchWord {
 
 	public static void main(String[] args)
 	{
-		
-		Scanner sc=new Scanner(System.in);
 		System.out.println("enter the string");
-		String str=sc.nextLine();
+		String str=Utility.userString();
 		String str1[]=str.split(" ");
 		System.out.println("enter the word to search");
 		
-		String key=sc.next();
+		String key=Utility.userNext();
 		Utility.binarySearchWord(str1,key);
 	}
 }

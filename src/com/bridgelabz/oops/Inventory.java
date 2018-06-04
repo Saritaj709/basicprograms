@@ -12,28 +12,28 @@ public class Inventory {
 		return name;
 	}
 
-	public String setName(String name) {
-		return this.name = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getPrice() {
 		return price;
 	}
 
-	public int setPrice(int price) {
-		 return this.price = price;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public int getWeight() {
 		return weight;
 	}
 
-	public int setWeight(int weight) {
-		return this.weight = weight;
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
-public int totalPrice(int price,int weight)
-{
-	int tp=setPrice(price)*setWeight(weight);
-	return tp;
-}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return " Inventory [name= "+name+"weight= "+weight+"price= "+price+"]";
+	}
 }
