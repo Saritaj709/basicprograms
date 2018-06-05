@@ -13,6 +13,7 @@ package com.bridgelabz.datastructures;
 import com.bridgelabz.utility.Utility;
 
 public class PrimeAnagram2D {
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		MyLinkedList[][] array = new MyLinkedList[100][];
 		for (int i = 0; i < 10; i++) {

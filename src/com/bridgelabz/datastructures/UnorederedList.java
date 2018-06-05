@@ -22,8 +22,9 @@ import java.io.IOException;
 import com.bridgelabz.utility.Utility;
 
 public class UnorederedList {
+	
 	public static void main(String[] args) throws IOException {
-		MyLinkedList list = new MyLinkedList();
+		MyLinkedList<String> list = new MyLinkedList<String>();
 		File fi =new File("/home/bridgelabz/JSarita/DataStructures/list");
 		FileReader fr=null;
 		BufferedReader br=null;
@@ -74,7 +75,7 @@ public class UnorederedList {
 		bw.write(str1);
 		//;
 		bw.close();
-		System.out.println("The word is added to the file and list");
+		System.out.println("The word is not found, word is added to the file and list");
 		System.out.println("the new file is--->");
 		list.display();
 	}

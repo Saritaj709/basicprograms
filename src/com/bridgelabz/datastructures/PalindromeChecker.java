@@ -13,6 +13,7 @@ package com.bridgelabz.datastructures;
 import com.bridgelabz.utility.Utility;
 
 public class PalindromeChecker {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		System.out.println("enter the string");
 		String str = Utility.userString();

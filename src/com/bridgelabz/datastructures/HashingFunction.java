@@ -28,16 +28,14 @@ public class HashingFunction {
 	    public static void main(String[] args) throws IOException {
 	        MyLinkedList list = new MyLinkedList<>();
 	        HashMap map = new HashMap<>();
-	        int size1 = list.size();
 	        String number = "";
-	        MyLinkedList[] arrayList = new MyLinkedList[11];
+	        @SuppressWarnings("rawtypes")
+			MyLinkedList[] arrayList = new MyLinkedList[11];
 	        for (int i = 0; i < arrayList.length; i++) {
 	            arrayList[i] = new MyLinkedList<Integer>();
 	        }
 	        File f = new File("/home/bridgelabz/JSarita/DataStructures/hashtable");
 	        FileReader fs = null;
-	        FileWriter fWriter = null;
-	        BufferedWriter bWriter = null;
 	        ArrayList<String> a = new ArrayList<String>();
 	        BufferedReader fo = null;
 	        try {

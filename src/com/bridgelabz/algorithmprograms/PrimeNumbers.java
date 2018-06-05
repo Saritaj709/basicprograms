@@ -9,14 +9,18 @@
  *
  ******************************************************************************/
 
-
-
 package com.bridgelabz.algorithmprograms;
-import  com.bridgelabz.utility.Utility;
+
+import com.bridgelabz.utility.Utility;
 
 public class PrimeNumbers {
-public static void main(String[] args)
-{
-	Utility.primeNumbers();
-}
+	public static void main(String[] args) {
+		System.out.println("The prime no.s from 0 to 1000 :");
+		for (int i = 0; i < 1000; i++) {
+			if (Utility.findPrime(i) == true) {
+				System.out.println(i);
+			}
+
+		}
+	}
 }

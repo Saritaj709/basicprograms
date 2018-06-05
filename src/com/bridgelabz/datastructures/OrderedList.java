@@ -22,6 +22,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class OrderedList {
+	@SuppressWarnings({ "rawtypes", "unchecked", "resource" })
 	public static void main(String[] args) throws IOException {
 		MyLinkedList list = new MyLinkedList();
 		File fi = new File("/home/bridgelabz/JSarita/DataStructures/orderedlist");
@@ -46,7 +47,7 @@ public class OrderedList {
 				list.add(sorted[i]);
 
 			list.display();
-			System.out.println("enter th element to search in the linked list");
+			System.out.println("enter the element to search in the linked list");
 			int number = Utility.userInt();
 			int valueAt = list.search(number);
 			if (valueAt == -1) {

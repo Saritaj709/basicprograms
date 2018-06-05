@@ -1,11 +1,20 @@
 package com.bridgelabz.oops.inventory;
 
+import java.sql.Date;
+
 public class CommercialPojo {
 	private String filename;
 	private double accDollars;
-	private int amount;
+	private double amount;
 	private String symbol;
+	private Date date;
 	
+	public Date getDate() {
+		return date;
+	}
+	public Date setDate(Date date) {
+		return this.date = date;
+	}
 	public String getFilename() {
 		return filename;
 	}
@@ -18,10 +27,10 @@ public class CommercialPojo {
 	public double setAccDollars(double accDollars) {
 		return this.accDollars = accDollars;
 	}
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
-	public int setAmount(int amount) {
+	public double setAmount(double amount) {
 		return this.amount = amount;
 	}
 	public String getSymbol() {
@@ -32,7 +41,7 @@ public class CommercialPojo {
 	}
 	@Override
 	public String toString() {
-		return "CommercialData [ filename is= "+filename+"accDollars is= "+accDollars+"amount is= "+amount+"symboli is ="+symbol+"]";
+		return "CommercialData [ filename is= "+filename+"  accDollars is= "+accDollars+" amount is= "+amount+" symboli is ="+symbol+"Date= "+date+"]";
 	}
 	
 

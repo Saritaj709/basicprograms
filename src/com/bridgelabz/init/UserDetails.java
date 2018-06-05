@@ -1,9 +1,9 @@
 package com.bridgelabz.init;
 
-public class userDetails {
+public class UserDetails {
 	private String fname, lname, mobileNo, date;
 
-	public userDetails() {
+	public UserDetails() {
 
 	}
 

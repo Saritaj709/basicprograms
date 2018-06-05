@@ -583,54 +583,6 @@ public class Utility {
 	/**************************************************************/
 	// Algorithm Programs
 	/**************************************************************************/
-	// First Program
-	/******************************************************************/
-
-	/*
-	 * // Two detect of two strings are Anagram (having same characters in both) //
-	 *//**
-		 * @param s1
-		 *            is the first string
-		 * @param s2
-		 *            is the 2nd string
-		 *//*
-			 * public static void anagramDetection(String s1, String s2) { boolean isAnagram
-			 * = false; if (s1.length() == s2.length()) { char[] s1AsChar =
-			 * s1.toCharArray(); char[] s2AsChar = s2.toCharArray(); Arrays.sort(s1AsChar);
-			 * Arrays.sort(s2AsChar); isAnagram = Arrays.equals(s1AsChar, s2AsChar); if
-			 * (isAnagram == true) System.out.println("Strings are anagram"); else
-			 * System.out.println("Strings are not anagram"); }
-			 * 
-			 * }
-			 */
-
-	/************************************************************************/
-	// To find Prime numbers from 0 to 1000
-	/**
-	 * @param i
-	 *            is the first/outer loop index
-	 * @param j
-	 *            is the second/inner loop index
-	 */
-	public static void primeNumbers() {
-		String primeNo = "";
-		for (int i = 0; i <= 1000; i++) {
-			int count = 0;
-			for (int j = i; j >= 1; j--) {
-
-				if (i % j == 0) {
-
-					count = count + 1; // System.out.println("Not a prime no.");
-				}
-			}
-			if (count == 2) {
-				primeNo = primeNo + i + " ";
-			}
-		}
-		System.out.println("prime no.s are:" + primeNo);
-	}
-
-	/**************************************************************************/
 	// Prime numbers that are anagram and palindrome //
 
 	public static void primePalindrome() {

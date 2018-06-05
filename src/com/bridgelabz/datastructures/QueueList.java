@@ -9,6 +9,7 @@ public class QueueList {
 	}
 
 	// to add in the queue
+	@SuppressWarnings("rawtypes")
 	public void enqueue(Comparable item) {
 		l.add(item);
 	}

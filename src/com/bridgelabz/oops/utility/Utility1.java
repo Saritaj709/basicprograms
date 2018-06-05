@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.bridgelabz.init.userDetails;
+import com.bridgelabz.init.UserDetails;
 
 public class Utility1 {
 	BufferedReader br;
@@ -22,7 +22,7 @@ public class Utility1 {
 	{
 		br=new BufferedReader(new InputStreamReader(System.in));
 	}
-	public String convertString(userDetails userdetails,String message)
+	public String convertString(UserDetails userdetails,String message)
 	{
 		Pattern p=Pattern.compile(REGEX_NAME);
 		Matcher m=p.matcher(message);
