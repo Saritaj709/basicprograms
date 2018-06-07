@@ -1,0 +1,13 @@
+[ {
+  "filename" : "sarita",
+  "accDollars" : 1456,
+  "amount" : 1256.0,
+  "symbol" : "tata",
+  "date" : "1970-01-01"
+}, {
+  "filename" : "jaiswal",
+  "accDollars" : 14563,
+  "amount" : 1456.0,
+  "symbol" : "jio",
+  "date" : "1970-01-01"
+} ]

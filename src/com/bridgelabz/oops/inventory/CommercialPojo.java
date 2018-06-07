@@ -1,19 +1,34 @@
 package com.bridgelabz.oops.inventory;
 
 import java.sql.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class CommercialPojo {
 	private String filename;
-	private double accDollars;
-	private double amount;
+	private long accDollars;
+	private long amount;
 	private String symbol;
-	private Date date;
+	private Date date1;
 	
 	public Date getDate() {
-		return date;
+		return date1;
 	}
-	public Date setDate(Date date) {
-		return this.date = date;
+	/*public GregorianCalendar setDate(int day,int month,int year,int hour,int minute,int second) {
+		GregorianCalendar date = new GregorianCalendar();
+		 
+	      day = date.get(Calendar.DAY_OF_MONTH);
+	      month = date.get(Calendar.MONTH);
+	      year = date.get(Calendar.YEAR);
+	 
+	      second = date.get(Calendar.SECOND);
+	      minute = date.get(Calendar.MINUTE);
+	      hour = date.get(Calendar.HOUR);
+	 
+		return  date;
+	}*/
+	public Date setDate(Date date1) {
+		return this.date1=date1;
 	}
 	public String getFilename() {
 		return filename;
@@ -21,16 +36,16 @@ public class CommercialPojo {
 	public String setFilename(String filename) {
 		return this.filename = filename;
 	}
-	public double getAccDollars() {
+	public long getAccDollars() {
 		return accDollars;
 	}
-	public double setAccDollars(double accDollars) {
+	public long setAccDollars(long accDollars) {
 		return this.accDollars = accDollars;
 	}
 	public double getAmount() {
 		return amount;
 	}
-	public double setAmount(double amount) {
+	public long setAmount(long amount) {
 		return this.amount = amount;
 	}
 	public String getSymbol() {
@@ -41,7 +56,7 @@ public class CommercialPojo {
 	}
 	@Override
 	public String toString() {
-		return "CommercialData [ filename is= "+filename+"  accDollars is= "+accDollars+" amount is= "+amount+" symboli is ="+symbol+"Date= "+date+"]";
+		return "CommercialData [ filename is= "+filename+"  accDollars is= "+accDollars+" amount is= "+amount+" symboli is ="+symbol+"Date= "+date1+"]";
 	}
 	
 
