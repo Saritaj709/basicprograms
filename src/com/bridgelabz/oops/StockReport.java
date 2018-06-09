@@ -13,6 +13,7 @@ static int eachStockValue;
 static int totalStockValue;
 static int eachShareValue;
 static int totalShareValue;
+static int totalValueOfEachShare;
 	public static void main(String[] args) throws Exception
 	{
 		JSONParser p=new JSONParser();
@@ -36,9 +37,11 @@ static int totalShareValue;
 			    eachShareValue=Integer.parseInt(sn.get("sharePrice").toString());
 			    System.out.println("Stock |each share value| "+eachShareValue);
 			    totalShareValue+=Integer.parseInt(sn.get("sharePrice").toString());
+			    totalValueOfEachShare=totalShareValue/eachShareValue;
 			}
 			System.out.println("Stock | total No. of share | "+totalStockValue);
 			 System.out.println("Stock | total share amount| "+totalShareValue);
+			 System.out.println("Value of each share amount| "+totalValueOfEachShare);
 	
 	}
 }

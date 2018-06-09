@@ -1,0 +1,9 @@
+[ {
+  "product" : "jio",
+  "price" : 2563,
+  "quantity" : 23
+}, {
+  "product" : "bsnl",
+  "price" : 1456,
+  "quantity" : 25
+} ]

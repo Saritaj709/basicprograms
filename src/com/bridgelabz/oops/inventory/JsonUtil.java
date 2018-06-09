@@ -39,12 +39,12 @@ public class JsonUtil {
 		}
 		return jsonResult;
 	}
-	public static void toJson(File file,Object object)throws Exception
+	public static void toJson(File file,List list)throws Exception
 	{
 		file=new File("pretty.json");
 		ObjectMapper mapper=new ObjectMapper();
 		ObjectWriter writer=mapper.writer(new DefaultPrettyPrinter());
-		writer.writeValue(file,object);
+		writer.writeValue(file,list);
 		System.out.println("done");
 	}
 	public static void writeFile(String addressBookNew) throws FileNotFoundException
