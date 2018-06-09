@@ -4,19 +4,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.impl.DefaultPrettyPrinter;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
+import org.codehaus.jackson.map.type.CollectionType;
 
 import com.bridgelabz.oops.addressbook.Person;
 
 public class JsonUtil {
+	List<Person> list=new ArrayList<>();
 	private static ObjectMapper mapper;
 	static {
 		mapper = new ObjectMapper();
@@ -68,4 +72,18 @@ public class JsonUtil {
 	      System.out.println("Current date is  "+day+"/"+(month+1)+"/"+year);
 	      System.out.println("Current time is  "+hour+" : "+minute+" : "+second);
 }
+	public static void saveToJson(File file, List<Person> list)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+		writer.writeValue(file, list);
+		System.out.println("done file");
+	}
+	public static <T>List JsonParser(File file,Class<T> parser) throws JsonParseException, JsonMappingException, IOException
+	{
+		List<T> list=new ArrayList<T>();
+		CollectionType javaType=mapper.getTypeFactory().constructCollectionType(List.class, parser);
+		list=mapper.readValue(file, javaType);
+		return list;
+	}
 }

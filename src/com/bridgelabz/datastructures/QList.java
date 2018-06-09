@@ -58,7 +58,7 @@ public class QList<T extends Comparable<T>> {
 	public void display() {
 		QNode<T> node = front;
 		while (node != null) {
-			System.out.println(node.data + " ");
+			System.out.print(node.data+ " ");
 			node = node.next;
 		}
 	}

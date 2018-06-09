@@ -29,19 +29,14 @@ public class HashingFunction {
 	        MyLinkedList list = new MyLinkedList<>();
 	        HashMap map = new HashMap<>();
 	        String number = "";
-	        @SuppressWarnings("rawtypes")
-			MyLinkedList[] arrayList = new MyLinkedList[11];
-	        for (int i = 0; i < arrayList.length; i++) {
-	            arrayList[i] = new MyLinkedList<Integer>();
-	        }
 	        File f = new File("/home/bridgelabz/JSarita/DataStructures/hashtable");
 	        FileReader fs = null;
 	        ArrayList<String> a = new ArrayList<String>();
-	        BufferedReader fo = null;
+	        BufferedReader br = null;
 	        try {
 	            fs = new FileReader(f);
-	            fo = new BufferedReader(fs);
-	            number = fo.readLine();
+	            br = new BufferedReader(fs);
+	            number = br.readLine();
 	            while (number != null) {
 	                String[] str = number.split(",");
 	                for (int i = 0; i < str.length; i++) {

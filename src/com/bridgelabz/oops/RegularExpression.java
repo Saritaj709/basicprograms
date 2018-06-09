@@ -13,7 +13,7 @@ public class RegularExpression {
 		   UserDetails user=new UserDetails();
 		   System.out.println("enter first name");
 		   user.setFname(Utility.userString());
-		   System.out.println("enter full name");
+		   System.out.println("enter last name");
 		   user.setLname(Utility.userString());
 		   System.out.println("enter mobile no");
 		   user.setMobileNo(Utility.userString());

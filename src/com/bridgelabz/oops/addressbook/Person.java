@@ -3,7 +3,20 @@ package com.bridgelabz.oops.addressbook;
 public class Person {
 
 	private String id,firstName,lastName,address,city,zip,phone;
-
+	public Person()
+	{
+		
+	}
+public Person(String id,String firstName,String lastName,String address,String city,String zip,String phone)
+{
+	this.id=id;
+	this.firstName=firstName;
+	this.lastName=lastName;
+	this.address=address;
+	this.city=city;
+	this.zip=zip;
+	this.phone=phone;
+}
 	public String getId() {
 		return id;
 	}

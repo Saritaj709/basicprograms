@@ -23,6 +23,7 @@ public class PrimeAnagram2DQueue {
 	            }
 	        }
 	        for (int i = 0; i < 10; i++) {
+	        	
 	            for (int j = 100 * i; j < 100 * (i + 1) - 1; j++) {
 	              
 	                if (Utility.findPrime(j) == true) {
@@ -30,12 +31,14 @@ public class PrimeAnagram2DQueue {
 	                        if (Utility.isAnagram(("" + j), ("" + m)) == true) {
 	                            qlist.enqueue(m);
 	                            qlist.enqueue(j);
+	                          
 	                        }
 	                    }
 	                }
+	             
 	            }
-
 	        }
-	        qlist.display();
+	        qlist.display();      
 	    }
+	    
 	}

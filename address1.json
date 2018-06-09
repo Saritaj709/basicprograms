@@ -1,0 +1,17 @@
+[ {
+  "id" : " 2345",
+  "firstName" : "meenu",
+  "lastName" : "singh",
+  "address" : "blore",
+  "city" : "mg",
+  "zip" : "8976",
+  "phone" : "3456789065"
+}, {
+  "id" : "meena",
+  "firstName" : "kumari",
+  "lastName" : "patna",
+  "address" : "vashi",
+  "city" : "9765",
+  "zip" : "0989098765",
+  "phone" : "5467"
+} ]
