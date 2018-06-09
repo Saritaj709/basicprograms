@@ -37,17 +37,17 @@ String choice;
 	}
 	public void addPerson() throws Exception {
 		list=JsonUtil.JsonParser(file,Person.class);
-		Person p = new Person(id, firstName, lastName, address, city, zip, phone);
+		Person person = new Person(id, firstName, lastName, address, city, zip, phone);
 		System.out.println("enter the person details,id,firstname,lastname,address,city,zip,phone");
-		id = p.setId(Utility.userString());
-		id=p.setId(Utility.userString());
-		firstName = p.setFirstName(Utility.userString());
-		lastName = p.setLastName(Utility.userString());
-		address = p.setAddress(Utility.userString());
-		city = p.setCity(Utility.userString());
-		zip = p.setZip(Utility.userString());
-		phone = p.setPhone(Utility.userString());	
-		list.add(p);
+		id = person.setId(Utility.userString());
+		id=person.setId(Utility.userString());
+		firstName = person.setFirstName(Utility.userString());
+		lastName = person.setLastName(Utility.userString());
+		address = person.setAddress(Utility.userString());
+		city = person.setCity(Utility.userString());
+		zip = person.setZip(Utility.userString());
+		phone = person.setPhone(Utility.userString());	
+		list.add(person);
 		JsonUtil.saveToJson(file, list);
 		System.out.println("Person added");
 		addressBookCount++;
@@ -100,16 +100,7 @@ String choice;
 				int index=Utility.userInt();
 				System.out.println("deleting person");
 				list.remove(index);
-				System.out.println("Do you want to save:yes/no");
-				{
-					choice=Utility.userNext();
-					if(choice.equals("yes"))
-					{
-						JsonUtil.saveToJson(file, list);
-						System.out.println("list removed");
-					}
-					
-				}
+				confirm();
 				System.out.println("Id removed: " + list.remove(index));
 		return id;
 	}
@@ -183,30 +174,27 @@ String choice;
 		list=JsonUtil.JsonParser(file,Person.class);
 			Person person = new Person();
 			System.out.println("enter the id of person whose details are to be edited: ");
-			String id = Utility.userString();
+			String id = Utility.userNext();
+			//searchId(id);
 			System.out.println("enter the index where id is present");
 			int index = Utility.userInt();
-			searchId(id);
-				
-				System.out.println("id is at index" + index + " found,enter the details to edit,address,city,zip,phone");
-				String str =list.get(index).getId()+ list.get(index).getAddress() + list.get(index).getCity() + list.get(index).getZip()
-						+ list.get(index).getPhone();
+			searchId(id);	
+				System.out.println("id is at index" + index + " found,enter the details to edit,id,address,city,zip,phone");
 				firstName=list.get(index).getFirstName();
 				person.setFirstName(firstName);
 				lastName=list.get(index).getLastName();
 				person.setLastName(lastName);
-				String idnew=str.replace(list.get(index).getId(),Utility.userString());
-				person.setId(idnew);
-				String address = str.replace(list.get(index).getAddress(), Utility.userString());
-				person.setAddress(address);
-				String city = str.replace(list.get(index).getCity(), Utility.userString());
-				person.setCity(city);
-				String zip = str.replace(list.get(index).getZip(), Utility.userString());
+				person.setId(Utility.userString());
+				person.setAddress(Utility.userString());
+				person.setCity(Utility.userString());
 				person.setZip(Utility.userString());
-				String phone = str.replace(list.get(index).getPhone(), Utility.userString());
-				person.setPhone(phone);
+				person.setPhone(Utility.userString());
 				list.add(person);
-				JsonUtil.saveToJson(file, list);
+				confirm();
+				System.out.println("edited details");
+				list.remove(index);
+				confirm();
+				System.out.println("updated details");
 			}
 	public void updatePerson() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		list=JsonUtil.JsonParser(file,Person.class);
@@ -226,9 +214,20 @@ String choice;
 				id1[index] = list.get(index).getId();
 				if (id1[index].equals(id)) 
 					System.out.println("id found"+" at index "+index);
-				else
-					System.out.println("id not found");
 			}
+					System.out.println("id not found");
 		return id;
 }
+	public void confirm() throws JsonGenerationException, JsonMappingException, IOException
+	{
+		System.out.println("Do you want to save:yes/no");
+		{
+			choice=Utility.userNext();
+			if(choice.equals("yes"))
+			{
+				JsonUtil.saveToJson(file, list);
+				System.out.println("list updated");
+			}
+		}
+	}
 }

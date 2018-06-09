@@ -12,6 +12,7 @@ public class AddressBookMain {
 	{
 System.out.println("welcome to address book manager");
 AddressBookManager manager=new AddressBookManager();
+AddressBook addressBook=new AddressBook();
 File file=new File("/home/bridgelabz/JSarita/DataStructures/address.json");
 
 do
@@ -49,7 +50,7 @@ case 7:manager.editAddressBookDetails();
        break;
 case 8:System.out.println("enter the name of new addressBook");
 String addressBookNew=Utility.userNext();
-	manager.createMultipleAddressBook(addressBookNew);
+manager.createMultipleAddressBook(addressBookNew);     
        break;
 case 9:manager.addressBookId();
        break;

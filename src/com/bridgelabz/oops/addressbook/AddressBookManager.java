@@ -93,9 +93,12 @@ public void createMultipleAddressBook(String addressBookNew) throws JsonParseExc
 {
 	addressBookList=mapper.readValue(new File(bookList),new TypeReference<List<String>>() {});
 	File file=new File(filepath+addressBookNew+".json");
+	System.out.println("filename created");
+	addDetailsToJsonFile(file);
 	addressBookList.add(file.toString());
 	mapper.writeValue(file,personList);
 	mapper.writeValue(new File(bookList),addressBookList);
+	System.out.println("AddressBook created");
 }
 public void showMultipleAddressBook() throws FileNotFoundException, IOException, ParseException
 {
@@ -121,6 +124,22 @@ public File findAddressBook(String addressBookName) throws FileNotFoundException
 	}
 		System.out.println("addressBook not found");
       return null;
+}
+public void addDetailsToJsonFile(File file) throws JsonGenerationException, JsonMappingException, IOException
+{
+	Person person=new Person();
+	System.out.println("enter the details you want to enter:id,firstname,lastname,address,city,zip,phone");
+	String id=person.setId(Utility.userString());
+	String firstName=person.setFirstName(Utility.userString());
+	String lastName=person.setLastName(Utility.userString());
+	String address=person.setAddress(Utility.userString());
+	String city=person.setCity(Utility.userString());
+	String zip=person.setZip(Utility.userString());
+	String Phone=person.setPhone(Utility.userString());
+	personList.add(person);
+	JsonUtil.saveToJson(file, personList);
+	
+	
 }
 
 }

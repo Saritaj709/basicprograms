@@ -41,17 +41,15 @@ public class JsonUtil {
 	}
 	public static void toJson(File file,Object object)throws Exception
 	{
-		// Person person = new Person();
 		file=new File("pretty.json");
 		ObjectMapper mapper=new ObjectMapper();
 		ObjectWriter writer=mapper.writer(new DefaultPrettyPrinter());
 		writer.writeValue(file,object);
 		System.out.println("done");
 	}
-	public static void writeFile(File file) throws FileNotFoundException
+	public static void writeFile(String addressBookNew) throws FileNotFoundException
 	{
-		PrintWriter pw=new PrintWriter("jsonfile.json");
-		//pw.write(ob.toJSONString());
+		PrintWriter pw=new PrintWriter(addressBookNew+".json");
 		pw.flush();
 		pw.close();
 	}
@@ -85,5 +83,12 @@ public class JsonUtil {
 		CollectionType javaType=mapper.getTypeFactory().constructCollectionType(List.class, parser);
 		list=mapper.readValue(file, javaType);
 		return list;
+	}
+	public static void saveJson(File file,String data)throws Exception
+	{
+		ObjectMapper mapper=new ObjectMapper();
+		ObjectWriter writer=mapper.writer(new DefaultPrettyPrinter());
+		writer.writeValue(file,data);
+		System.out.println("done");
 	}
 }
