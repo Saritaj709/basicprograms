@@ -18,17 +18,17 @@ File file=new File("/home/bridgelabz/JSarita/DataStructures/address.json");
 do
 {
 	System.out.println("Enter the operation you want to do:"
-			+ "1.Create new AddressBook "
-			+ "2.remove user"
-			+ "3.Print the data"
-			+ "4Sort by name"
-			+ "5.Sort by zip"
-			+ "6.GetfullName of user"
-			+ "7.Editdetails of user"
-			+ "8.Create new addressBook for user"
-			+"9.AddressBookId of user and details of user at that id"
-			+ "10.save"
-			+ "11.GetOtherPersonInformation"
+			+ "1.Create new AddressBook\n "
+			+ "2.remove user\n"
+			+ "3.Print the data\n"
+			+ "4Sort by name\n"
+			+ "5.Sort by zip\n"
+			+ "6.GetfullName of user\n"
+			+ "7.Editdetails of user\n"
+			+ "8.Create new addressBook for user\n"
+			+"9.AddressBookId of user and details of user at that id\n"
+			+ "10.save\n"
+			+ "11.GetOtherPersonInformation\n"
 	         +  "12.Exit");
 	System.out.println("enter the choice 1 to 12");
 	int choice=Utility.userInt();

@@ -85,10 +85,6 @@ public void editAddressBookDetails() throws JsonGenerationException, JsonMapping
 {
 	addressBook.editDetails();
 }
-public void updateAddressBook() throws JsonGenerationException, JsonMappingException, IOException, ParseException
-{
-	addressBook.updatePerson();
-}
 public void createMultipleAddressBook(String addressBookNew) throws JsonParseException, JsonMappingException, IOException
 {
 	addressBookList=mapper.readValue(new File(bookList),new TypeReference<List<String>>() {});
