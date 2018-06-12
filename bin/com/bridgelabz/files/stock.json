@@ -1,0 +1,16 @@
+[ {
+  "stockName" : "reliance",
+  "stockSymbol" : "r",
+  "noOfStock" : 400,
+  "stockCharge" : 120.0
+}, {
+  "stockName" : "reliance",
+  "stockSymbol" : "r",
+  "noOfStock" : 789,
+  "stockCharge" : 34.0
+}, {
+  "stockName" : "jio",
+  "stockSymbol" : "j",
+  "noOfStock" : 620,
+  "stockCharge" : 60.0
+} ]

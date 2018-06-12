@@ -1,0 +1,11 @@
+[ {
+  "customerId" : "5678",
+  "customerName" : "dutta",
+  "accountBalance" : 7896312.0,
+  "mobileNumber" : "789654236"
+}, {
+  "customerId" : "5670",
+  "customerName" : "tina",
+  "accountBalance" : 145826.0,
+  "mobileNumber" : "789654236"
+} ]
