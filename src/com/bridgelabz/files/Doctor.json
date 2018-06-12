@@ -1,0 +1,13 @@
+[ {
+  "doctorName" : "mahesh",
+  "doctorId" : "6789",
+  "doctorSpecialization" : "neuro",
+  "doctorAvailability" : "morning",
+  "patientCountForDoctor" : 2
+}, {
+  "doctorName" : "ramesh",
+  "doctorId" : "8765",
+  "doctorSpecialization" : "cardiac",
+  "doctorAvailability" : "evening",
+  "patientCountForDoctor" : 4
+} ]
