@@ -1,3 +1,13 @@
+/******************************************************************************
+ *  Compilation:  javac -d bin ClinicManager.java
+ *  Execution:    java -cp bin com.bridgelabz.controller.java ManagerServiceimplementationClass
+ *  Purpose: Displays a Clinic Management System
+ *
+ *  @author  Sarita
+ *  @version 1.0
+ *  @since  12-06-2018
+ ******************************************************************************/
+
 package com.bridgelabz.controller;
 
 import java.io.IOException;
@@ -16,6 +26,11 @@ public class ClinicManager {
 	static PatientServiceImplementationClass patientService = new PatientServiceImplementationClass();
 
 	public static void main(String[] args) throws Exception {
+		System.out.println("**********************************************");
+		System.out.println("WELCOME TO CLINIC MANAGEMENT");
+		System.out.println("***********************************************");
+		System.out.println("PLEASE ENTER VALID OPTIONS");
+		System.out.println("**************************************************");
 		while (true) {
 
 			System.out.println("enter your choice\n" + "1.For doctor details modifications\n"
@@ -39,7 +54,7 @@ public class ClinicManager {
 				manager.addAppointment();
 				break;
 			default:
-				System.out.println("invalid choice");
+				System.out.println("invalid choice,pls try again");
 				break;
 
 			}
@@ -62,7 +77,7 @@ public class ClinicManager {
 				manager.updateDoctorDetails();
 				break;
 			default:
-				System.out.println("invalid choice");
+				System.out.println("invalid choice,pls try again");
 				break;
 
 			}
@@ -85,7 +100,7 @@ public class ClinicManager {
 				manager.updatePatientDetails();
 				break;
 			default:
-				System.out.println("invalid choice");
+				System.out.println("invalid choice,pls try again");
 				break;
 
 			}
@@ -96,7 +111,8 @@ public class ClinicManager {
 	public static void doctorDetailsModifications() throws JsonParseException, JsonMappingException, IOException {
 		while (true) {
 			System.out.println("enter the choice\n" + "1.For Display details\n" + "2.For Search by Id\n"
-					+ "3.For Search by Name\n" + "4.For Search by Specialization\n" + "5.For Search by Availability\n");
+					+ "3.For Search by Name\n" + "4.For Search by Specialization\n" + "5.For Search by Availability\n"
+							+ "6.Search Most Popular Doctor\n");
 			int choice = ClinicalUtility.userInteger();
 			switch (choice) {
 			case 1:
@@ -114,8 +130,10 @@ public class ClinicManager {
 			case 5:
 				doctorService.searchDoctorByAvailability();
 				break;
+			case 6:doctorService.searchMostPopularDoctor();
+			break;
 			default:
-				System.out.println("invalid choice");
+				System.out.println("invalid choice,pls try again");
 				break;
 
 			}
@@ -141,7 +159,7 @@ public class ClinicManager {
 				patientService.searchPatientByNumber();
 				break;
 			default:
-				System.out.println("invalid choice");
+				System.out.println("invalid choice,pls try again");
 				break;
 			}
 		}

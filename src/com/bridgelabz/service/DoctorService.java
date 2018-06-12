@@ -12,4 +12,5 @@ public interface DoctorService{
 	public void searchDoctorByName() throws JsonParseException, JsonMappingException, IOException;
 	public void searchDoctorBySpecialization() throws JsonParseException, JsonMappingException, IOException;
 	public void searchDoctorByAvailability() throws JsonParseException, JsonMappingException, IOException;
+    public void searchMostPopularDoctor() throws JsonParseException, JsonMappingException, IOException;
 }

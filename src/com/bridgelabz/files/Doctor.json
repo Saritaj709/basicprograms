@@ -10,4 +10,16 @@
   "doctorSpecialization" : "cardiac",
   "doctorAvailability" : "evening",
   "patientCountForDoctor" : 4
+}, {
+  "doctorName" : "saurav",
+  "doctorId" : "6780",
+  "doctorSpecialization" : "dermology",
+  "doctorAvailability" : "afternoon",
+  "patientCountForDoctor" : 2
+}, {
+  "doctorName" : "suhail",
+  "doctorId" : "7654",
+  "doctorSpecialization" : "radiology",
+  "doctorAvailability" : "evening",
+  "patientCountForDoctor" : 5
 } ]

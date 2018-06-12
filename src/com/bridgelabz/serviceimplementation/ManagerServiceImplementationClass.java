@@ -67,13 +67,13 @@ public class ManagerServiceImplementationClass implements ManagerService {
 		Doctor doctor = new Doctor();
 		System.out.println("enter the id of the doctor you want to remove");
 		String id = ClinicalUtility.userNext();
-		for (int index = 0; index < doctorList.size(); index++) {
+		for (int index = 0; index < doctorList.size(); index++) 
 			if (doctorList.get(index).getDoctorId().equals(id))
 				doctorList.remove(index);
 			save();
-			// break;
-			 return;
-		}
+			//break;
+			// return;
+		
 	}
 
 	@Override
