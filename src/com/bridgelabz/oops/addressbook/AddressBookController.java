@@ -1,3 +1,14 @@
+/******************************************************************************
+ *  Compilation:  javac -d bin AddressBookController.java
+ *  Execution:    java -cp bin com.bridgelabz.oops.addressbook.java AddressBook
+ *  Purpose: Displays a address book management system
+ *
+ *  @author  Sarita
+ *  @version 1.0
+ *  @since  09-06-2018
+ *
+ ******************************************************************************/
+
 package com.bridgelabz.oops.addressbook;
 import java.io.File;
 import java.util.ArrayList;
@@ -6,7 +17,7 @@ import java.util.List;
 import com.bridgelabz.oops.inventory.JsonUtil;
 import com.bridgelabz.utility.Utility;
 
-public class AddressBookMain {
+public class AddressBookController {
 	static List<Person> list=new ArrayList<>();
 	public static void main(String[] args) throws Exception
 	{

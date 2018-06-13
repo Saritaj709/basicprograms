@@ -1,38 +1,34 @@
 package com.bridgelabz.algorithmprograms;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import com.bridgelabz.utility.Utility;
 
 public class insertionSortList {
-	/*
-	 * public static void insertionSort(String[] list) { for (int top = 1; top <
-	 * list.length; top++) { String item = list[top]; int i = top; while (i > 0 &&
-	 * item.compareTo(list[i - 1]) < 0) { list[i] = list[i - 1]; i--; } list[i] =
-	 * item; System.out.print(list[0]); System.out.print(" ");
-	 * System.out.print(list[1]); System.out.print(" "); System.out.print(list[2]);
-	 * System.out.print(" "); System.out.print(list[3]); System.out.print(" ");
-	 * System.out.print(list[4]); System.out.println(); } }
-	 */
+	static List<Integer> list = new LinkedList<>();
+	static int[] array;
+
 	public static void main(String[] args) {
 
-		String[] list = new String[100];
-		for (int top = 1; top < list.length; top++) {
-			String item = list[top];
-			int i = top;
-			while (i > 0 && item.compareTo(list[i - 1]) < 0) {
-				list[i] = list[i - 1];
-				i--;
-			}
-			list[i] = item;
-			System.out.print(list[0]);
-			System.out.print(" ");
-			System.out.print(list[1]);
-			System.out.print(" ");
-			System.out.print(list[2]);
-			System.out.print(" ");
-			System.out.print(list[3]);
-			System.out.print(" ");
-			System.out.print(list[4]);
-			System.out.println();
+		System.out.println("enter the no. of elements ");
+		int number = Utility.userInt();
+		System.out.println("enter the elements int list");
+		for (int i = 0; i < number; i++) {
+			list.add(Utility.userInt());
+
+		}
+		array = new int[list.size()];
+		System.out.println("before sorting elements are : ");
+		for (int i = 0; i < list.size(); i++) {
+			array[i] = list.get(i);
+			System.out.println(array[i]);
+		}
+
+		System.out.println("list elements after sorting are : ");
+		Utility.sort(array);
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
 		}
 	}
 }

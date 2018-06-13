@@ -2,12 +2,17 @@ package com.bridgelabz.datastructures;
 
 public class QueueList {
 	SingleLinkedList l = new SingleLinkedList();
+	private int size;
 
+	
+	public QueueList(int size)
+	{
+		this.size=size;
+	}
 	// to return an empty queue
 	static QueueList queue() {
-		return new QueueList();
+		return new QueueList(0);
 	}
-
 	// to add in the queue
 	@SuppressWarnings("rawtypes")
 	public void enqueue(Comparable item) {
@@ -16,7 +21,7 @@ public class QueueList {
 
 	// to display items
 	public void display() {
-		l.displayln();
+		l.display();
 	}
 
 	// to remove an element

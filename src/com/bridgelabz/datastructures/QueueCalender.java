@@ -19,7 +19,7 @@ public class QueueCalender {
 		for (int i = 0; i < 6; i++) {
 			a[i] = new QueueList[7];
 			for (int j = 0; j < 7; j++) {
-				a[i][j] = new QueueList();
+				a[i][j] = new QueueList(100);
 			}
 		}
 		int d = 1;
