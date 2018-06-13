@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -23,7 +25,8 @@ public class ManagerServiceImplementation implements ManagerService {
 	File stockFile = new File("/home/bridgelabz/JSarita/StockAccount/src/com/bridgelabz/files/stock.json");
 	List<Transaction> transactionList = new LinkedList<>();
 	File transactionFile = new File("/home/bridgelabz/JSarita/StockAccount/src/com/bridgelabz/files/transaction.json");
-
+    List<String> stackList=new Stack<>();
+    Queue<String> queueList=new LinkedList<>();
 	public ManagerServiceImplementation() {
 		try {
 			customerList = StockUtility.jsonParser(customerFile, Customer.class);
@@ -218,7 +221,8 @@ public class ManagerServiceImplementation implements ManagerService {
 		String id = transaction.setCustomerId(StockUtility.userNext());
 
 		while (true) {
-			System.out.println("enter the option: 1 for buy stock, for sell stock\n");
+			System.out.println("enter the option: 1 for buy stock,2 for sell stock\n"
+					+ "3 for push symbol to stack\n");
 			int choice = StockUtility.userInteger();
 			switch (choice) {
 			case 1:
@@ -237,8 +241,10 @@ public class ManagerServiceImplementation implements ManagerService {
 					}
 				}
 				System.out.println("taking date");
-				transaction.setTimeStamp(StockUtility.dateTimeFormatter());
-				transactionList.add(transaction);
+			String timeStamp=transaction.setTimeStamp(StockUtility.dateTimeFormatter());
+			queueList.add(timeStamp);
+			displayQueue();
+			transactionList.add(transaction);
 				System.out.println(("save for transaction now"));
 				save();
 
@@ -258,19 +264,53 @@ public class ManagerServiceImplementation implements ManagerService {
 				}
 			}
 			System.out.println("taking date");
-			transaction.setTimeStamp(StockUtility.dateTimeFormatter());
+		String timeStamp1=transaction.setTimeStamp(StockUtility.dateTimeFormatter());
+		queueList.add(timeStamp1);
+		displayQueue();
 			transactionList.add(transaction);
 			System.out.println(("save for transaction now"));
 			save();
 				break;
+			case 3:stackList.add(symbol);
+			       displayStack();
+				break;
+			/*case 4:queueList.add(timeStamp);
+				break;*/
 			default:
 				System.out.println("invalid option,pls try again");
 				break;
 			}
 		}
 	}
-
-	public void showStockDetails() throws JsonParseException, JsonMappingException, IOException {
+public void displayStack()
+{
+	for(int i=0;i<stackList.size();i++)
+	{
+		if(stackList.size()>0)
+		{
+			System.out.println("Symbol in stack is : "+stackList.get(i));
+		}
+		else
+		{
+			System.out.println("stack is empty");
+		}
+	}
+}
+public void displayQueue()
+{
+	for(int i=0;i<queueList.size();i++)
+	{
+		if(queueList.size()>0)
+		{
+			System.out.println("Transactions were done at time : "+queueList);
+		}
+		else
+		{
+			System.out.println("queue is empty");
+		}
+	}
+}
+public void showStockDetails() throws JsonParseException, JsonMappingException, IOException {
 		stockList = StockUtility.jsonParser(stockFile, Stock.class);
 		for (int i = 0; i < stockList.size(); i++) {
 			System.out.println("Name of stock is : " + stockList.get(i).getStockName());

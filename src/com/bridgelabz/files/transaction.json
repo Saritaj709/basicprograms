@@ -38,4 +38,12 @@
   "stockCharge" : 30.0,
   "timeStamp" : "2018/06/12 18:43:34",
   "noOfStock" : 600
+}, {
+  "stockName" : "reliance",
+  "stockSymbol" : "r",
+  "customerName" : "dutta",
+  "customerId" : "5678",
+  "stockCharge" : 120.0,
+  "timeStamp" : "2018/06/13 10:18:33",
+  "noOfStock" : 6
 } ]

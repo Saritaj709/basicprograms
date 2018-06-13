@@ -35,8 +35,8 @@ public String setCustomerId(String customerId) {
 public String getTimeStamp() {
 	return timeStamp;
 }
-public void setTimeStamp(String timeStamp) {
-	this.timeStamp = timeStamp;
+public String setTimeStamp(String timeStamp) {
+	return this.timeStamp = timeStamp;
 }
 public double getStockCharge() {
 	return stockCharge;
