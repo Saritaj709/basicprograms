@@ -71,9 +71,7 @@ public class ManagerServiceImplementationClass implements ManagerService {
 			if (doctorList.get(index).getDoctorId().equals(id))
 				doctorList.remove(index);
 			save();
-			//break;
-			// return;
-		
+			return;
 	}
 
 	@Override
@@ -95,6 +93,7 @@ public class ManagerServiceImplementationClass implements ManagerService {
 				save();
 				doctorList.remove(index);
 				save();
+				return;
 			}
 		}
 	}
@@ -148,6 +147,7 @@ public class ManagerServiceImplementationClass implements ManagerService {
 				save();
 				patientList.remove(patient);
 				save();
+				return;
 			}
 		}
 	}
@@ -156,12 +156,14 @@ public class ManagerServiceImplementationClass implements ManagerService {
 		Appointment appointment = new Appointment();
 		System.out.println("select the doctor details from given list of doctors");
 		doctor.showDoctorDetails();
+		System.out.println("\n");
 		System.out.println("enter the Doctor name to book an appointment");
 		String doctorName = appointment.setDoctorName(ClinicalUtility.userNext());
 		System.out.println("enter the doctor id");
 		appointment.setDoctorId(ClinicalUtility.userNext());
 		System.out.println("enter the patient details from given list of patient");
 		patient.showPatientDetails();
+		System.out.println("\n");
 		System.out.println("enter the patient name");
 		String patientName = appointment.setPatientName(ClinicalUtility.userNext());
 		System.out.println("enter the id of patient");
@@ -172,26 +174,29 @@ public class ManagerServiceImplementationClass implements ManagerService {
 					&& (patientList.get(i).getPatientId().equals(id))) {
 				System.out.println("Appointment given");
 				patientList.remove(i);
+				System.out.println("enter 2 to save for patient");
 				save();
-			} else {
-				System.out.println("The patient with given details is not avilable");
+				return;
 			}
+				System.out.println("The patient with given details is not avilable");
 		}
+		Doctor doctor=new Doctor();
+		doctorList = ClinicalUtility.jsonParser(fileDoctor, Doctor.class);
 		for (int j = 0; j < doctorList.size(); j++) {
 			if ((doctorList.get(j).getDoctorName().equals(doctorName))
 					&& (checkDoctorAvailability(doctorList.get(j)) == true)) {
 				System.out.println("Doctor is available for appointment");
-				doctorList.remove(j);
-				save();
-			} else {
-				System.out.println("Doctor is not available");
+				int count=doctorList.get(j).getPatientCountForDoctor();
+				updatePatientCount(count);
+				return;
 			}
+				System.out.println("Doctor is not available,dont save the appointment");
 		}
-		// System.out.println("enter the time");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		appointment.setTimeStamp(dtf.format(now));
 		appointmentList.add(appointment);
+		System.out.println("enter 3 to save for appointment");
 		save();
 	}
 
@@ -201,18 +206,41 @@ public class ManagerServiceImplementationClass implements ManagerService {
 		else
 			return false;
 	}
-
+	public void updatePatientCount(int count) throws Exception {
+		// TODO Auto-generated method stub
+		doctorList = ClinicalUtility.jsonParser(fileDoctor, Doctor.class);
+		System.out.println("enter the id of the doctor whose details are to be updated");
+		String id = ClinicalUtility.userNext();
+		Doctor doctor = new Doctor();
+		for (int index = 0; index < doctorList.size(); index++) {
+			if (doctorList.get(index).getDoctorId().equals(id)) {
+				doctor.setDoctorName(doctorList.get(index).getDoctorName());
+				doctor.setDoctorId(doctorList.get(index).getDoctorId());
+				doctor.setDoctorSpecialization(doctorList.get(index).getDoctorSpecialization());
+				doctor.setDoctorAvailability(doctorList.get(index).getDoctorAvailability());
+				System.out.println("updating patient count");
+				doctor.setPatientCountForDoctor(count++);
+				System.out.println("enter 1");
+				doctorList.add(doctor);
+				save();
+				System.out.println("enter 1");
+				doctorList.remove(index);
+				save();
+				return;
+			}
+		}
+	}
 	public void save() throws Exception {
 		System.out.println(
-				"Do you want to save:enter doctor/patient/app to save for doctor/patient,anything else for not saving");
+				"Do you want to save:enter 1/2/3 to save for doctor/patient/appointment,anything else for not saving");
 		choice = ClinicalUtility.userNext();
-		if (choice.equals("doctor")) {
+		if (choice.equals("1")) {
 			ClinicalUtility.saveJsonDoctor(fileDoctor, doctorList);
 			System.out.println("Doctor list updated");
-		} else if (choice.equals("patient")) {
+		} else if (choice.equals("2")) {
 			ClinicalUtility.saveJsonPatient(filePatient, patientList);
 			System.out.println("Patient list updated");
-		} else if (choice.equals("app")) {
+		} else if (choice.equals("3")) {
 			ClinicalUtility.saveJsonAppointment(fileAppointment, appointmentList);
 			System.out.println("Appointment list updated");
 		} else {

@@ -24,6 +24,7 @@ public class DoctorServiceImplementationClass implements DoctorService {
 		// TODO Auto-generated method stub
 		doctorList = ClinicalUtility.jsonParser(fileDoctor, Doctor.class);
 		for (int index = 0; index < doctorList.size(); index++) {
+			System.out.println("\n");
 			System.out.println("Name of Doctor at index " + index + " is " + doctorList.get(index).getDoctorName());
 			System.out.println("Id of Doctor " + doctorList.get(index).getDoctorName() + " is "
 					+ doctorList.get(index).getDoctorId());
@@ -49,10 +50,10 @@ public class DoctorServiceImplementationClass implements DoctorService {
 				System.out.println("Doctor Specialization is " + doctorList.get(index).getDoctorSpecialization());
 				System.out.println("Doctor Availability is " + doctorList.get(index).getDoctorAvailability());
 				System.out.println("Patient count for doctor is " + doctorList.get(index).getPatientCountForDoctor());
-			} else {
-				System.out.println("Doctor with given id is not present in doctor list");
+			     return;
 			}
 		}
+				System.out.println("Doctor with given id is not present in doctor list");
 	}
 
 	@Override
@@ -68,10 +69,10 @@ public class DoctorServiceImplementationClass implements DoctorService {
 				System.out.println("Doctor Specialization is " + doctorList.get(index).getDoctorSpecialization());
 				System.out.println("Doctor Availability is " + doctorList.get(index).getDoctorAvailability());
 				System.out.println("Patient count for doctor is " + doctorList.get(index).getPatientCountForDoctor());
-			} else {
-				System.out.println("Doctor with given name is not present in doctor list");
+			     return;
 			}
 		}
+				System.out.println("Doctor with given name is not present in doctor list");
 	}
 
 	@Override
@@ -87,11 +88,10 @@ public class DoctorServiceImplementationClass implements DoctorService {
 				System.out.println("Doctor name is " + doctorList.get(index).getDoctorName());
 				System.out.println("Doctor Availability is " + doctorList.get(index).getDoctorAvailability());
 				System.out.println("Patient count for doctor is " + doctorList.get(index).getPatientCountForDoctor());
-			} else {
-				System.out.println("Doctor with given specialization is not present in doctor list");
+			    return;
 			}
 		}
-
+				System.out.println("Doctor with given specialization is not present in doctor list");
 	}
 
 	@Override
@@ -107,18 +107,16 @@ public class DoctorServiceImplementationClass implements DoctorService {
 				System.out.println("Doctor name is " + doctorList.get(index).getDoctorName());
 				System.out.println("Doctor Specialization is " + doctorList.get(index).getDoctorSpecialization());
 				System.out.println("Patient count for doctor is " + doctorList.get(index).getPatientCountForDoctor());
-			} else {
-				System.out.println("Doctor with given availability is not present in doctor list");
-			}
+			return;
+			} 
 		}
+				System.out.println("Doctor with given availability is not present in doctor list");
 	}
 
 	@Override
 	public void searchMostPopularDoctor() throws JsonParseException, JsonMappingException, IOException {
 		// TODO Auto-generated method stub
 		doctorList = ClinicalUtility.jsonParser(fileDoctor, Doctor.class);
-		int patientCount[] = new int[10];
-		int max;
 		List<Integer> list = new LinkedList<>();
 		for (int index = 0; index < doctorList.size(); index++) {
 			list.add(doctorList.get(index).getPatientCountForDoctor());

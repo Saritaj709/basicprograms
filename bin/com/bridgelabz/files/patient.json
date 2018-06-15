@@ -1,11 +1,11 @@
 [ {
-  "patientName" : "nawaz",
-  "patientMobileNumber" : "256398745",
-  "patientId" : "4567",
-  "patientAge" : 23
+  "patientName" : "jack",
+  "patientMobileNumber" : "4589632569",
+  "patientId" : "7689",
+  "patientAge" : 24
 }, {
-  "patientName" : "pratik",
-  "patientMobileNumber" : "7896543256",
-  "patientId" : "1235",
-  "patientAge" : 23
+  "patientName" : "kamal",
+  "patientMobileNumber" : "896532569",
+  "patientId" : "1209",
+  "patientAge" : 34
 } ]

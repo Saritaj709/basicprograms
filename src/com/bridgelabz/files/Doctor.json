@@ -1,25 +1,25 @@
 [ {
-  "doctorName" : "mahesh",
-  "doctorId" : "6789",
-  "doctorSpecialization" : "neuro",
-  "doctorAvailability" : "morning",
-  "patientCountForDoctor" : 2
-}, {
   "doctorName" : "ramesh",
   "doctorId" : "8765",
   "doctorSpecialization" : "cardiac",
   "doctorAvailability" : "evening",
   "patientCountForDoctor" : 4
 }, {
-  "doctorName" : "saurav",
-  "doctorId" : "6780",
-  "doctorSpecialization" : "dermology",
-  "doctorAvailability" : "afternoon",
-  "patientCountForDoctor" : 2
-}, {
   "doctorName" : "suhail",
   "doctorId" : "7654",
   "doctorSpecialization" : "radiology",
   "doctorAvailability" : "evening",
   "patientCountForDoctor" : 5
+}, {
+  "doctorName" : "pratik",
+  "doctorId" : "6754",
+  "doctorSpecialization" : "cardiac",
+  "doctorAvailability" : "morning",
+  "patientCountForDoctor" : 2
+}, {
+  "doctorName" : "saurav",
+  "doctorId" : "6780",
+  "doctorSpecialization" : "dermology",
+  "doctorAvailability" : "afternoon",
+  "patientCountForDoctor" : 4
 } ]

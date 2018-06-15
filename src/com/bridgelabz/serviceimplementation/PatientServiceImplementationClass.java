@@ -23,6 +23,7 @@ public class PatientServiceImplementationClass implements PatientService {
 		patientList=ClinicalUtility.jsonParser(filePatient,Patient.class);
 		for(int index=0;index<patientList.size();index++)
 		{
+			System.out.println("\n");
 		 System.out.println("Name of Patient at index "+index+" is "+patientList.get(index).getPatientName());
 		 System.out.println("Id of Patient "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientId());
 		 System.out.println("Age of Patient is "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientAge());
@@ -43,12 +44,10 @@ public class PatientServiceImplementationClass implements PatientService {
 				System.out.println("Id of patient  "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientId());
 				System.out.println("Age of patient  "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientAge());
 				System.out.println("Mobile No. of patient "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientMobileNumber());
-			}
-			else
-			{
-				System.out.println("Patient with given Name does not exist");
+				return;
 			}
 		}
+				System.out.println("Patient with given Name does not exist");
 	}
 
 	@Override
@@ -65,12 +64,10 @@ public class PatientServiceImplementationClass implements PatientService {
 				System.out.println("Name of patient  "+patientList.get(index).getPatientName());
 				System.out.println("Age of patient  "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientAge());
 				System.out.println("Mobile No. of patient "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientMobileNumber());
-			}
-			else
-			{
-				System.out.println("patient with given id does not exist");
+				return;
 			}
 		}
+				System.out.println("patient with given id does not exist");
 	}
 
 	@Override
@@ -86,13 +83,11 @@ public class PatientServiceImplementationClass implements PatientService {
 				System.out.println("Mobile Number of patient at index "+index+" is "+patientList.get(index).getPatientMobileNumber());
 				System.out.println("Name of patient "+patientList.get(index).getPatientName());
 				System.out.println("Id of patient  "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientId());
-				System.out.println("Age of patient  "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientAge());			
-			}
-			else
-			{
-				System.out.println("Patient with given mobile number doe not exist");
+				System.out.println("Age of patient  "+patientList.get(index).getPatientName()+" is "+patientList.get(index).getPatientAge());		
+				return;
 			}
 		}
+				System.out.println("Patient with given mobile number doe not exist");
 	}
 
 }
