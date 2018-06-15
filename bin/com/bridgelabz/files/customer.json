@@ -1,11 +1,13 @@
 [ {
-  "customerId" : "5670",
-  "customerName" : "tina",
-  "accountBalance" : 145826.0,
-  "mobileNumber" : "789654236"
+  "customerId" : "6540",
+  "firstName" : "mona",
+  "lastName" : "singh",
+  "accountBalance" : 45632.0,
+  "mobileNumber" : "7896532569"
 }, {
-  "customerId" : "5678",
-  "customerName" : "dutta",
-  "accountBalance" : 7896552.0,
-  "mobileNumber" : "789654236"
+  "customerId" : "1098",
+  "firstName" : "suhail",
+  "lastName" : "khan",
+  "accountBalance" : 5044.0,
+  "mobileNumber" : "7895632564"
 } ]

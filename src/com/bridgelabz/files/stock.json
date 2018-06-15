@@ -9,8 +9,8 @@
   "noOfStock" : 412,
   "stockCharge" : 120.0
 }, {
-  "stockName" : "reliance",
-  "stockSymbol" : "r",
-  "noOfStock" : 412,
-  "stockCharge" : 120.0
+  "stockName" : "tata",
+  "stockSymbol" : "t",
+  "noOfStock" : 4567,
+  "stockCharge" : 458.0
 } ]

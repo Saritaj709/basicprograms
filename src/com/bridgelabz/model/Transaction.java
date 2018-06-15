@@ -3,7 +3,8 @@ package com.bridgelabz.model;
 public class Transaction {
 private String stockName;
 private String stockSymbol;
-private String customerName;
+private String firstName;
+private String lastName;
 private String customerId;
 private double stockCharge;
 private String timeStamp;
@@ -20,11 +21,18 @@ public String getStockSymbol() {
 public String setStockSymbol(String stockSymbol) {
 	return this.stockSymbol = stockSymbol;
 }
-public String getCustomerName() {
-	return customerName;
+
+public String getFirstName() {
+	return firstName;
 }
-public void setCustomerName(String customerName) {
-	this.customerName = customerName;
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+public String getLastName() {
+	return lastName;
+}
+public void setLastName(String lastName) {
+	this.lastName = lastName;
 }
 public String getCustomerId() {
 	return customerId;

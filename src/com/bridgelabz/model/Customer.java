@@ -2,7 +2,8 @@ package com.bridgelabz.model;
 
 public class Customer {
 	private String customerId;
-	private String customerName;
+	private String firstName;
+	private String lastName;
 	private String MobileNumber;
 	private Double accountBalance;
 	public String getCustomerId() {
@@ -11,11 +12,18 @@ public class Customer {
 	public void setCustomerId(String id) {
 		customerId = id;
 	}
-	public String getCustomerName() {
-		return customerName;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getMobileNumber() {
 		return MobileNumber;

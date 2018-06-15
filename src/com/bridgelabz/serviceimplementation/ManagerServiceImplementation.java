@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Stack;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -25,8 +24,9 @@ public class ManagerServiceImplementation implements ManagerService {
 	File stockFile = new File("/home/bridgelabz/JSarita/StockAccount/src/com/bridgelabz/files/stock.json");
 	List<Transaction> transactionList = new LinkedList<>();
 	File transactionFile = new File("/home/bridgelabz/JSarita/StockAccount/src/com/bridgelabz/files/transaction.json");
-    List<String> stackList=new Stack<>();
-    Queue<String> queueList=new LinkedList<>();
+	List<String> stackList = new LinkedList<>();
+	Queue<String> queueList = new LinkedList<>();
+
 	public ManagerServiceImplementation() {
 		try {
 			customerList = StockUtility.jsonParser(customerFile, Customer.class);
@@ -43,8 +43,10 @@ public class ManagerServiceImplementation implements ManagerService {
 	public void addCustomer() throws Exception {
 		// TODO Auto-generated method stub
 		Customer customer = new Customer();
-		System.out.println("enter the name of customer");
-		customer.setCustomerName(StockUtility.userNext());
+		System.out.println("enter the first name of customer");
+		customer.setFirstName(StockUtility.userNext());
+		System.out.println("enter last name of customer");
+		customer.setLastName(StockUtility.userNext());
 		System.out.println("enter the mobile no.");
 		customer.setMobileNumber(StockUtility.userNext());
 		System.out.println("enter id of customer");
@@ -65,10 +67,10 @@ public class ManagerServiceImplementation implements ManagerService {
 			if (customerList.get(index).getCustomerId().equals(id)) {
 				customerList.remove(index);
 				save();
-			} else {
-				System.out.println("id not found");
+			  return;
 			}
 		}
+				System.out.println("id not found");
 	}
 
 	public void updateCustomerDetails() throws Exception {
@@ -78,18 +80,19 @@ public class ManagerServiceImplementation implements ManagerService {
 		String id = StockUtility.userNext();
 		Customer customer = new Customer();
 		for (int index = 0; index < customerList.size(); index++) {
-			customer.setCustomerName(customerList.get(index).getCustomerName());
+			customer.setFirstName(customerList.get(index).getFirstName());
+			customer.setLastName(customerList.get(index).getLastName());
 			customer.setCustomerId(customerList.get(index).getCustomerId());
 			customer.setAccountBalance(customerList.get(index).getAccountBalance());
 			if (customerList.get(index).getCustomerId().equals(id)) {
-				System.out.println("enter customer mobile no. to edit");
+				System.out.println("enter customer mobile no.,account balance to edit");
 				customer.setMobileNumber(StockUtility.userNext());
 				customer.setAccountBalance(StockUtility.userDouble());
-
 				customerList.add(customer);
 				save();
 				customerList.remove(index);
 				save();
+				return;
 			}
 		}
 	}
@@ -102,13 +105,14 @@ public class ManagerServiceImplementation implements ManagerService {
 		String id = StockUtility.userNext();
 		Customer customer = new Customer();
 		for (int index = 0; index < customerList.size(); index++) {
-			customer.setCustomerName(customerList.get(index).getCustomerName());
+			customer.setFirstName(customerList.get(index).getFirstName());
+			customer.setLastName(customerList.get(index).getLastName());
 			customer.setCustomerId(customerList.get(index).getCustomerId());
 			customer.setAccountBalance(customerList.get(index).getAccountBalance());
 			customer.setMobileNumber(customerList.get(index).getMobileNumber());
 
 			if (customerList.get(index).getCustomerId().equals(id)) {
-				System.out.println("enter customer mobile no. to edit");
+				System.out.println("updating customer account balance");
 				customer.setAccountBalance(accountBalance);
 				customerList.add(customer);
 				System.out.println("enter 1");
@@ -116,7 +120,7 @@ public class ManagerServiceImplementation implements ManagerService {
 				customerList.remove(index);
 				System.out.println("enter 1");
 				save();
-				break;
+				return;
 			}
 		}
 	}
@@ -147,10 +151,10 @@ public class ManagerServiceImplementation implements ManagerService {
 			if (stockList.get(index).getStockSymbol().equals(symbol)) {
 				stockList.remove(index);
 				save();
-			} else {
-				System.out.println("symbol not found");
+			return;
 			}
 		}
+				System.out.println("symbol not found");
 	}
 
 	@Override
@@ -171,12 +175,12 @@ public class ManagerServiceImplementation implements ManagerService {
 				save();
 				stockList.remove(index);
 				save();
-				break;
-			} else {
-				System.out.println("symbol not found");
+			 return;
 			}
 		}
+				System.out.println("symbol not found");
 	}
+
 	private void updateStockDetails(int noOfStock) throws Exception {
 		// TODO Auto-generated method stub
 		stockList = StockUtility.jsonParser(stockFile, Stock.class);
@@ -188,7 +192,7 @@ public class ManagerServiceImplementation implements ManagerService {
 				stock.setStockName(stockList.get(index).getStockName());
 				stock.setStockSymbol(stockList.get(index).getStockSymbol());
 				stock.setStockCharge(stockList.get(index).getStockCharge());
-				System.out.println(" updating no of stock,");		
+				System.out.println(" updating no of stock,");
 				stock.setNoOfStock(noOfStock);
 				stockList.add(stock);
 				System.out.println("enter 2");
@@ -196,12 +200,12 @@ public class ManagerServiceImplementation implements ManagerService {
 				stockList.remove(index);
 				System.out.println("enter 2");
 				save();
-				//break;
-			} else {
-				System.out.println("symbol not found");
+				return;
 			}
 		}
+				System.out.println("symbol not found");
 	}
+
 	public void addTransactionDetails() throws Exception {
 		Transaction transaction = new Transaction();
 		System.out.println("The details for stock and customer are shown below,pls select valid details");
@@ -209,23 +213,48 @@ public class ManagerServiceImplementation implements ManagerService {
 		System.out.println("enter the name of stock to buy/sell");
 		transaction.setStockName(StockUtility.userNext());
 		System.out.println("enter the symbol of stock to buy");
-		String symbol=transaction.setStockSymbol(StockUtility.userNext());
+		String symbol = transaction.setStockSymbol(StockUtility.userNext());
 		System.out.println("enter stock charge");
 		double stockCharge = transaction.setStockCharge(StockUtility.userDouble());
 		System.out.println("enter the no. of stocks to buy");
-		int noOfStock=transaction.setNoOfStock(StockUtility.userInteger());
+		int noOfStock = transaction.setNoOfStock(StockUtility.userInteger());
 		showCustomerDetails();
-		System.out.println("enter the name of customer");
-		transaction.setCustomerName(StockUtility.userNext());
+		System.out.println("enter the first name of customer");
+		transaction.setFirstName(StockUtility.userNext());
+		System.out.println("enter last name of custiomer");
+		transaction.setLastName(StockUtility.userNext());
 		System.out.println("enter id of customer");
 		String id = transaction.setCustomerId(StockUtility.userNext());
 
 		while (true) {
-			System.out.println("enter the option: 1 for buy stock,2 for sell stock\n"
-					+ "3 for push symbol to stack\n");
+			System.out.println("enter the option: 1 for buy stock,2 for sell stock\n" + "3 for push symbol to stack\n");
 			int choice = StockUtility.userInteger();
 			switch (choice) {
 			case 1:
+				customerList = StockUtility.jsonParser(customerFile, Customer.class);
+				for (int i = 0; i < customerList.size(); i++) {
+					if (customerList.get(i).getCustomerId().equals(id)) {
+						double newBalance = customerList.get(i).getAccountBalance() - stockCharge;
+						updateCustomerDetails(newBalance);
+					}
+				}
+				stockList = StockUtility.jsonParser(stockFile, Stock.class);
+				for (int i = 0; i < stockList.size(); i++) {
+					if (stockList.get(i).getStockSymbol().equals(symbol)) {
+						int newStockCount = stockList.get(i).getNoOfStock() - noOfStock;
+						updateStockDetails(newStockCount);
+						return;
+					}
+				}
+				System.out.println("taking date");
+				String timeStamp = transaction.setTimeStamp(StockUtility.dateTimeFormatter());
+				queueList.add(timeStamp);
+				displayQueue();
+				transactionList.add(transaction);
+				System.out.println(("save for transaction now"));
+				save();
+				break;
+			case 2:
 				customerList = StockUtility.jsonParser(customerFile, Customer.class);
 				for (int i = 0; i < customerList.size(); i++) {
 					if (customerList.get(i).getCustomerId().equals(id)) {
@@ -234,97 +263,68 @@ public class ManagerServiceImplementation implements ManagerService {
 					}
 				}
 				stockList = StockUtility.jsonParser(stockFile, Stock.class);
-				for (int i = 0; i <stockList.size(); i++) {
+				for (int i = 0; i < stockList.size(); i++) {
 					if (stockList.get(i).getStockSymbol().equals(symbol)) {
 						int newStockCount = stockList.get(i).getNoOfStock() + noOfStock;
 						updateStockDetails(newStockCount);
 					}
 				}
 				System.out.println("taking date");
-			String timeStamp=transaction.setTimeStamp(StockUtility.dateTimeFormatter());
-			queueList.add(timeStamp);
-			displayQueue();
-			transactionList.add(transaction);
+				String timeStamp1 = transaction.setTimeStamp(StockUtility.dateTimeFormatter());
+				queueList.add(timeStamp1);
+				displayQueue();
+				transactionList.add(transaction);
 				System.out.println(("save for transaction now"));
 				save();
-
 				break;
-			case 2:customerList = StockUtility.jsonParser(customerFile, Customer.class);
-			for (int i = 0; i < customerList.size(); i++) {
-				if (customerList.get(i).getCustomerId().equals(id)) {
-					double newBalance = customerList.get(i).getAccountBalance() + stockCharge;
-					updateCustomerDetails(newBalance);
-				}
-			}
-			stockList = StockUtility.jsonParser(stockFile, Stock.class);
-			for (int i = 0; i <stockList.size(); i++) {
-				if (stockList.get(i).getStockSymbol().equals(symbol)) {
-					int newStockCount = stockList.get(i).getNoOfStock() + noOfStock;
-					updateStockDetails(newStockCount);
-				}
-			}
-			System.out.println("taking date");
-		String timeStamp1=transaction.setTimeStamp(StockUtility.dateTimeFormatter());
-		queueList.add(timeStamp1);
-		displayQueue();
-			transactionList.add(transaction);
-			System.out.println(("save for transaction now"));
-			save();
+			case 3:
+				stackList.add(symbol);
+				displayStack();
 				break;
-			case 3:stackList.add(symbol);
-			       displayStack();
-				break;
-			/*case 4:queueList.add(timeStamp);
-				break;*/
 			default:
 				System.out.println("invalid option,pls try again");
 				break;
 			}
 		}
 	}
-public void displayStack()
-{
-	for(int i=0;i<stackList.size();i++)
-	{
-		if(stackList.size()>0)
-		{
-			System.out.println("Symbol in stack is : "+stackList.get(i));
-		}
-		else
-		{
-			System.out.println("stack is empty");
+
+	public void displayStack() {
+		for (int i = 0; i < stackList.size(); i++) {
+			if (stackList.size() > 0) {
+				System.out.println("Symbol in stack is : " + stackList.get(i));
+			} else {
+				System.out.println("stack is empty");
+			}
 		}
 	}
-}
-public void displayQueue()
-{
-	for(int i=0;i<queueList.size();i++)
-	{
-		if(queueList.size()>0)
-		{
-			System.out.println("Transactions were done at time : "+queueList);
-		}
-		else
-		{
-			System.out.println("queue is empty");
+
+	public void displayQueue() {
+		for (int i = 0; i < queueList.size(); i++) {
+			if (queueList.size() > 0) {
+				System.out.println("Transaction time is : " + queueList);
+			} else {
+				System.out.println("queue is empty");
+			}
 		}
 	}
-}
-public void showStockDetails() throws JsonParseException, JsonMappingException, IOException {
+
+	public void showStockDetails() throws JsonParseException, JsonMappingException, IOException {
 		stockList = StockUtility.jsonParser(stockFile, Stock.class);
 		for (int i = 0; i < stockList.size(); i++) {
 			System.out.println("Name of stock is : " + stockList.get(i).getStockName());
 			System.out.println("Stock symbol is : " + stockList.get(i).getStockSymbol());
 			System.out.println("Stock charge is : " + stockList.get(i).getStockCharge());
 			System.out.println("Stock quantity is : " + stockList.get(i).getNoOfStock());
-		   System.out.println("Total stock amount is : "+stockList.get(i).getStockCharge()*stockList.get(i).getNoOfStock());
+			System.out.println(
+					"Total stock amount is : " + stockList.get(i).getStockCharge() * stockList.get(i).getNoOfStock());
 		}
 	}
 
 	public void showCustomerDetails() throws JsonParseException, JsonMappingException, IOException {
 		customerList = StockUtility.jsonParser(customerFile, Customer.class);
 		for (int i = 0; i < customerList.size(); i++) {
-			System.out.println("Name of customer is : " + customerList.get(i).getCustomerName());
+			System.out.println("First Name of customer is : " + customerList.get(i).getFirstName());
+			System.out.println("Last Name of customer is : " + customerList.get(i).getLastName());
 			System.out.println("Id of customer is : " + customerList.get(i).getCustomerId());
 			System.out.println("Mobile no. of customer is : " + customerList.get(i).getMobileNumber());
 			System.out.println("Account balance of customer is : " + customerList.get(i).getAccountBalance());
