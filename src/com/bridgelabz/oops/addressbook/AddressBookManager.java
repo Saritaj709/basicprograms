@@ -24,12 +24,6 @@ import com.bridgelabz.utility.Utility;
 
 public class AddressBookManager {
 	AddressBook book;
-	String firstName;
-	String lastName;
-	String address;
-	String city;
-	String zip;
-	String phone;
 	AddressBook addressBook = new AddressBook();
 	List<String> addressBookList = new ArrayList<>();
 	List<Person> personList = new ArrayList<>();
@@ -121,6 +115,7 @@ public class AddressBookManager {
 		});
 		if (addressBookList.contains(filepath + addressBookName + ".json")) {
 			int index = addressBookList.indexOf(filepath + addressBookName + ".json");
+			System.out.println(" address book found");
 			return new File(addressBookList.get(index));
 		}
 		System.out.println("addressBook not found");
@@ -130,13 +125,13 @@ public class AddressBookManager {
 	public void addDetailsToJsonFile(File file) throws JsonGenerationException, JsonMappingException, IOException {
 		Person person = new Person();
 		System.out.println("enter the details you want to enter:id,firstname,lastname,address,city,zip,phone");
-		String id = person.setId(Utility.userString());
-		String firstName = person.setFirstName(Utility.userString());
-		String lastName = person.setLastName(Utility.userString());
-		String address = person.setAddress(Utility.userString());
-		String city = person.setCity(Utility.userString());
-		String zip = person.setZip(Utility.userString());
-		String Phone = person.setPhone(Utility.userString());
+		String id = person.setId(Utility.userNext());
+		String firstName = person.setFirstName(Utility.userNext());
+		String lastName = person.setLastName(Utility.userNext());
+		String address = person.setAddress(Utility.userNext());
+		String city = person.setCity(Utility.userNext());
+		String zip = person.setZip(Utility.userNext());
+		String Phone = person.setPhone(Utility.userNext());
 		personList.add(person);
 		JsonUtil.saveToJson(file, personList);
 

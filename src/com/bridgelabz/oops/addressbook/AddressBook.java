@@ -29,8 +29,6 @@ public class AddressBook {
 	ObjectMapper mapper = new ObjectMapper();
 	JSONObject obj = new JSONObject();
 	File file = new File("/home/bridgelabz/JSarita/DataStructures/address1.json");
-	int addressBookCount = 0;
-String choice;
 	public AddressBook()
 	{
 		try
@@ -61,9 +59,6 @@ String choice;
 		phone = person.setPhone(Utility.userNext());	
 		personList.add(person);
 		JsonUtil.saveToJson(file, personList);
-		System.out.println("Person added");
-		addressBookCount++;
-		System.out.println("AddressBookcount is: " + addressBookCount);
 	}
 	public void getFullNameOfPerson() throws FileNotFoundException, IOException, ParseException
 																																							// lastName)
@@ -78,7 +73,8 @@ String choice;
 			{
 			fullName = personList.get(index).getFirstName() + personList.get(index).getLastName();
 			System.out.println("Full name of person is: " + fullName);
-		}
+		 return;
+			}
 		}
 	}
 		
@@ -96,11 +92,12 @@ String choice;
 					System.out.println("city of person" + index + "= " + personList.get(index).getCity());
 					System.out.println("zip of person" + index + "= " + personList.get(index).getZip());
 					System.out.println("phone of person" + index + "= " + personList.get(index).getPhone());
+				return;
 				}
 			}
 	}
 
-	public String removePerson() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+	public  void removePerson() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		personList=JsonUtil.JsonParser(file,Person.class);
 			System.out.println("enter the id of the person who is to be deleted");
 			String id = Utility.userNext();
@@ -111,9 +108,9 @@ String choice;
 				System.out.println("deleting person");
 				personList.remove(index);
 				confirm();
+				return;
 		    		 }
 		      }
-		return id;
 	}
 
 	public void sortByName() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
@@ -206,6 +203,7 @@ String choice;
 				personList.remove(index);
 				confirm();
 				System.out.println("updated details");
+				return;
 			}
 		}
 	}
@@ -226,7 +224,7 @@ String choice;
 	{
 		System.out.println("Do you want to save:yes/no");
 		{
-			choice=Utility.userNext();
+			String choice=Utility.userNext();
 			if(choice.equals("yes"))
 			{
 				JsonUtil.saveToJson(file, personList);
