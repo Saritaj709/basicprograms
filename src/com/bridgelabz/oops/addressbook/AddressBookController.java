@@ -39,7 +39,7 @@ do
 			+ "8.Create new addressBook for user\n"
 			+"9.AddressBookId of user and details of user at that id\n"
 			+ "10.save\n"
-			+ "11.GetOtherPersonInformation\n"
+			+ "11.show multiple address book\n"
 	         +  "12.Exit");
 	System.out.println("enter the choice 1 to 12");
 	int choice=Utility.userInt();
